@@ -112,7 +112,14 @@ class Main extends React.Component {
 		const state = this.props.state;
 
 		return <div>
-			<h3>Import from keyboard-layout-editor.com</h3>
+			<h3>Upload Keyboard Firmware Builder configuration</h3>
+			<button
+				className='block'
+				onClick={ this.upload }>
+				Upload
+			</button>
+			<br/><br/>
+			<h3>Or import from keyboard-layout-editor.com</h3>
 			<textarea
 				className='kle'
 				placeholder='Paste layout here...'
@@ -123,6 +130,21 @@ class Main extends React.Component {
 				onClick={ this.useKLE }>
 				Import
 			</button>
+			<br/><br/>
+			<h3>Or choose a preset layout</h3>
+			{(() => {
+				const presets = [];
+				for (const preset in C.PRESETS) {
+					presets.push(<button
+						className='light block'
+						onClick={ () => this.usePreset(preset) }
+						key={ preset }>
+						{ C.PRESETS[preset] }
+					</button>);
+					presets.push(<div style={{ height: '0.5rem' }} key={ '-key-' + preset }/>);
+				}
+				return presets;
+			})()}
 		</div>;
 	}
 

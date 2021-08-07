@@ -73,6 +73,8 @@ class KeyboardH extends Generator {
 		})();
 
 		return {
+            'current_year': new Date().getFullYear(),
+            'author': keyboard.settings.author,
 			'keymap_1': keymap1,
 			'keymap_2': keymap2
 		};

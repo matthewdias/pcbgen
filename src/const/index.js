@@ -69,7 +69,7 @@ const C = {
 	KEYCODE_RECOMMENDED: Keycodes.RECOMMENDED,
 
 	// Keymap.
-	KEYMAP_MAX_LAYERS: 16,
+	KEYMAP_MAX_LAYERS: 4,
 
 	// Macros.
 	MACRO_NONE:     0,

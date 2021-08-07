@@ -74,8 +74,10 @@ class Compile extends React.Component {
 		// Generate source files.
 		const files = Files.generate(keyboard);
 
+        console.log(files)
+
 		// Get the firmware stencil.
-		JSZipUtils.getBinaryContent('./files/firmware.zip', (err, data) => {
+		JSZipUtils.getBinaryContent('/files/firmware.zip', (err, data) => {
 			if (err) {
 				console.error(err);
 				state.error('Unable to retrieve files');
@@ -180,14 +182,11 @@ class Compile extends React.Component {
 				onClick={ this.downloadKiCad }>
 				Download KiCad PCB
 			</button>
+			<div style={{ height: '0.5rem' }}/>
             <button
 				onClick={ this.downloadZip }>
 				Download Firmware
 			</button>
-			<div style={{ height: '1.5rem' }}/>
-			LAYOUT macro:
-			<div style={{ height: '0.5rem' }}/>
-			<textarea readOnly style={{ width: "100%", height: "300px" }} value={ this.generateKeyboardH() }></textarea>
 		</div>;
 	}
 

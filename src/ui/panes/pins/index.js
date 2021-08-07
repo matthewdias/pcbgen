@@ -121,7 +121,7 @@ class Pins extends React.Component {
 				onChange={ p => keyboard.setPin('led', p) }
 				pin={ keyboard.pins.led }/>
 			<div style={{ height: '0.5rem' }}/>
-			<h2 style={{ width: '6rem', marginRight: '0.8rem' }}>WS2812 Strip</h2>
+			<h2 style={{ width: '6rem', marginRight: '0.8rem' }}>RGB</h2>
 			<Chooser
 				noPin
 				state={ state }

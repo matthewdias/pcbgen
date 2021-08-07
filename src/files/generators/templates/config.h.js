@@ -1,17 +1,33 @@
 module.exports = `
 
-#ifndef CONFIG_H
-#define CONFIG_H
+/*
+Copyright %current_year% %author%
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#pragma once
 
 #include "config_common.h"
 
+
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x6060
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    qmkbuilder
-#define PRODUCT         keyboard
-#define DESCRIPTION     Keyboard
+#define VENDOR_ID       0x%vendor_id%
+#define PRODUCT_ID      0x%product_id%
+#define DEVICE_VER      0x%device_ver%
+#define MANUFACTURER    %manufacturer%
+#define PRODUCT         %product%
 
 /* key matrix size */
 #define MATRIX_ROWS %rows%
@@ -25,38 +41,40 @@ module.exports = `
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION %diode_direction%
 
+/* Set 0 if debouncing isn't needed */
+#define DEBOUNCE 5
+
 /* number of backlight levels */
 %backlight_pin%
 #ifdef BACKLIGHT_PIN
 #define BACKLIGHT_LEVELS %backlight_levels%
 #endif
 
-/* Set 0 if debouncing isn't needed */
-#define DEBOUNCING_DELAY 5
-
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
-
-/* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
-
-/* key combination for command */
-#define IS_COMMAND() ( \\
-    keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \\
-)
-
-/* prevent stuck modifiers */
-#define PREVENT_STUCK_MODIFIERS
-
 %rgb_pin%
 #ifdef RGB_DI_PIN
-#define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM %num_rgb%
-#define RGBLIGHT_HUE_STEP 8
-#define RGBLIGHT_SAT_STEP 8
-#define RGBLIGHT_VAL_STEP 8
+#define RGBLIGHT_ANIMATIONS
 #endif
 
-#endif
+%led_num%
+%led_caps%
+%led_scroll%
+%led_compose%
+%led_kana%
+
+/*
+ * Feature disable options
+ *  These options are also useful to firmware size reduction.
+ */
+
+/* disable debug print */
+//#define NO_DEBUG
+
+/* disable print */
+//#define NO_PRINT
+
+/* disable these deprecated features by default */
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
 
 `.trim();

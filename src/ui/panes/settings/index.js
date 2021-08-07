@@ -67,43 +67,62 @@ class Settings extends React.Component {
 		return <div className='pane-settings'>
 			Configure your settings.
 			<div style={{ height: '0.5rem' }}/>
-			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Layout Name</h2>
+			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Keyboard Name</h2>
 			<input
 				style={{ width: '8rem' }}
 				type='text'
 				value={ keyboard.settings.name }
 				onChange={ e => keyboard.setSetting('name', e.target.value) }/>
 			<Help>
-				Give your layout a name!
+				Give your keyboard a name!
 			</Help>
-			<div style={{ height: '0.5rem' }}/>
-			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Bootloader Size</h2>
-			<select
+            <div style={{ height: '0.5rem' }}/>
+			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Firmware Author</h2>
+			<input
 				style={{ width: '8rem' }}
-				value={ keyboard.settings.bootloaderSize }
-				onChange={ e => keyboard.setSetting('bootloaderSize', parseInt(e.target.value)) }>
-				<option value={ C.BOOTLOADER_8192 }>8192 KB</option>
-				<option value={ C.BOOTLOADER_4096 }>4096 KB</option>
-				<option value={ C.BOOTLOADER_2048 }>2048 KB</option>
-				<option value={ C.BOOTLOADER_512 }>512 KB</option>
-			</select>
+				type='text'
+				value={ keyboard.settings.author }
+				onChange={ e => keyboard.setSetting('author', e.target.value) }/>
 			<Help>
-				<strong>Atmel DFU loader (ATmega32U4)</strong>: 4096
-				<br/>
-				<strong>Atmel DFU loader (AT90USB1286)</strong>: 8192
-				<br/>
-				<strong>LUFA bootloader (ATmega32U4)</strong>: 4096
-				<br/>
-				<strong>Arduino Caterina (ATmega32U4)</strong>: 4096
-				<br/>
-				<strong>USBaspLoader (ATmega***)</strong>: 2048
-				<br/>
-				<strong>Teensy halfKay (ATmega32U4)</strong>: 512
-				<br/>
-				<strong>Teensy++ halfKay (AT90USB1286)</strong>: 2048
-				<br/>
-				If in doubt, choose <strong>4096</strong>.
+				Name to list in C files as copyright owner
 			</Help>
+            <div style={{ height: '0.5rem' }}/>
+			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Vendor ID 0x</h2>
+			<input
+				style={{ width: '8rem' }}
+				type='text'
+				value={ keyboard.settings.vendorId }
+				onChange={ e => keyboard.setSetting('vendorId', e.target.value) }/>
+			<Help>
+				Unique 4-digit Hex code for vendor
+			</Help>
+            <div style={{ height: '0.5rem' }}/>
+			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Product ID 0x</h2>
+			<input
+				style={{ width: '8rem' }}
+				type='text'
+				value={ keyboard.settings.productId }
+				onChange={ e => keyboard.setSetting('productId', e.target.value) }/>
+			<Help>
+				Unique 4-digit Hex code for product
+			</Help>
+            <div style={{ height: '0.5rem' }}/>
+			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Device Ver 0x</h2>
+			<input
+				style={{ width: '8rem' }}
+				type='text'
+				value={ keyboard.settings.deviceVer }
+				onChange={ e => keyboard.setSetting('deviceVer', e.target.value) }/>
+			<Help>
+				4-digit Hex code for version
+			</Help>
+            <div style={{ height: '0.5rem' }}/>
+			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Manufacturer</h2>
+			<input
+				style={{ width: '8rem' }}
+				type='text'
+				value={ keyboard.settings.manufacturer }
+				onChange={ e => keyboard.setSetting('manufacturer', e.target.value) }/>
 			<div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>WS2812 LEDs</h2>
 			<div style={{ width: '8rem', display: 'inline-block', textAlign: 'left' }}>

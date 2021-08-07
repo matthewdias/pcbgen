@@ -37,8 +37,12 @@ class Keyboard {
 		this.quantum = C.QUANTUM_DEFAULT;
 		this.settings = {
 			diodeDirection: C.DIODE_COL2ROW,
-			name: '',
-			bootloaderSize: C.BOOTLOADER_4096,
+			name: 'keyboard',
+            author: '',
+            vendorId: 'FEED',
+            productId: '6060',
+            deviceVer: '0001',
+            manufacturer: '',
 			rgbNum: 0,
 			backlightLevels: 3
 		};
