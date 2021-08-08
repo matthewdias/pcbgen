@@ -2,6 +2,7 @@ const React = require('react');
 
 const Display = require('ui/display');
 const Panes = require('ui/panes');
+const Layouts = require('ui/layouts');
 
 class Editor extends React.Component {
 
@@ -18,8 +19,12 @@ class Editor extends React.Component {
 		return <div>
 			<Display
 				state={ this.props.state }/>
-			<Panes
-				state={ this.props.state }/>
+            <div style={{ display: 'flex' }}>
+                <Panes
+				    state={ this.props.state }/>
+                <Layouts 
+                    state={ this.props.state }/>
+            </div>
 		</div>;
 	}
 

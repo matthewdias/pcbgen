@@ -6,6 +6,9 @@ const C = require('const');
 class Wire extends React.Component {
 
 	render() {
+        if (!this.props.visible)
+            return null
+            
 		const state = this.props.state;
 		const flipped = state.ui.get('display-flip', false);
 

@@ -26,6 +26,7 @@ class Key {
 
 		// Bind functions.
 		this.guessLegend = this.guessLegend.bind(this);
+		this.getLayoutOption = this.getLayoutOption.bind(this);
 		this.select = this.select.bind(this);
 		this.serialize = this.serialize.bind(this);
 
@@ -106,6 +107,9 @@ class Key {
 
 		// Guess the legend.
 		this.guessLegend();
+
+        // Get the layout option
+        this.getLayoutOption();
 	}
 
 	/*
@@ -131,7 +135,8 @@ class Key {
 	 */
 	guessLegend() {
 		// Get the last legend.
-		const legends = this.legend.split('\n');
+		const legends = this.legend.split('\n')
+            .filter((legend, index) => !([4, 5, 11].includes(index))) 
 		const legend = legends[legends.length - 1];
 
 		// Look for an alias.
@@ -142,6 +147,20 @@ class Key {
 			// Default to KC_NO.
 			this.keycodes[0] = new Keycode('KC_NO', []);
 		}
+	}
+
+    /*
+	 * Find the layout option of the key
+	 */
+	getLayoutOption() {
+        const legends = this.legend.split('\n')
+        const layout = legends[4]
+        const layoutOption = legends[5]
+
+        if (layout && layoutOption) {
+            this.layout = layout
+            this.layoutOption = layoutOption
+        }
 	}
 
 	/*

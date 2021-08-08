@@ -14,6 +14,10 @@ class Keyboard {
 	constructor(state, json) {
 		this.state = state;
 		this.keys = [];
+        this.layouts = {};
+        this.layoutOptions = {};
+        this.layoutXs = {};
+        this.layoutYs = {};
 		this.bounds = {
 			min: { x: Number.MAX_VALUE, y: Number.MAX_VALUE },
 			max: { x: Number.MIN_VALUE, y: Number.MIN_VALUE }
@@ -132,6 +136,35 @@ class Keyboard {
 					continue;
 				}
 
+                const legends = entry.split('\n')
+                const layout = legends[4]
+                const layoutOption = legends[5]
+        
+                if (layout && layoutOption) {
+                    // first time seeing layout
+                    if (!this.layouts[layout]) {
+                        // set layout start point
+                        this.layoutXs[layout] = state.x
+                        this.layoutYs[layout] = state.y
+
+                        this.layoutOptions[layout] = {}
+                    } 
+
+                    // first time seeing layout option
+                    if (!this.layoutOptions[layout][layoutOption]) {
+                        // set layout cursor to start point
+                        this.layoutOptions[layout][layoutOption] = {
+                            x: this.layoutXs[layout],
+                            y: this.layoutYs[layout]
+                        }
+                    }
+                    
+                    state.x = this.layoutOptions[layout][layoutOption].x
+                    state.y = this.layoutOptions[layout][layoutOption].y
+
+                    this.layoutOptions[layout][layoutOption].x += state.w
+                }
+
 				// Create a new key with the current state.
 				const key = new Key(this, keyIndex ++, entry, Object.assign({}, state));
 				this.keys.push(key);
@@ -152,6 +185,17 @@ class Keyboard {
 				state.y2 = 0;
 				state.w2 = 0;
 				state.h2 = 0;
+
+                // Add any new layouts
+                if (key.layoutOption) {
+                    if (this.layouts[key.layout]) {
+                        if (!(this.layouts[key.layout].includes(key.layoutOption))) {
+                            this.layouts[key.layout].push(key.layoutOption)
+                        }
+                    } else {
+                        this.layouts[key.layout] = [key.layoutOption]
+                    }
+                }
 			}
 
 			// Increment y.

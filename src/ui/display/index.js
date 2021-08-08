@@ -134,13 +134,20 @@ class Display extends React.Component {
 				<div className='display-inner'>
 					{
 						// Display all the keys.
-						keyboard.keys.map((key, index) => {
-							return <Key
-								state={ state }
-								data={ key }
-								key={ index }
-								onClick={ this.onKeyClick(key) }/>;
-						})
+						keyboard.keys
+                            .filter((key) => {
+                                if (!key.layout && !key.layoutOption)
+                                    return true
+                                
+                                return key.layoutOption === state.ui.get(`layout:${key.layout}`)
+                            })
+                            .map((key, index) => {
+                                return <Key
+                                    state={ state }
+                                    data={ key }
+                                    key={ index }
+                                    onClick={ this.onKeyClick(key) }/>;
+                            })
 					}
 				</div>
 				{

@@ -14,38 +14,45 @@ class Keymap extends React.Component {
 		const layer = state.ui.get('keymap-layer', 0);
 
 		// Create a list of keycode boxes.
-		const keys = keyboard.keys.map((key, index) => {
-			const style = {
-				top: key.pos.y * keySize,
-				left: (flipped ? state.keyboard.bounds.max.x - key.pos.x - key.size.w : key.pos.x) * keySize,
-			};
+		const keys = keyboard.keys
+            .filter((key) => {
+                if (!key.layout && !key.layoutOption)
+                    return true
+                
+                return key.layoutOption === state.ui.get(`layout:${key.layout}`)
+            })
+            .map((key, index) => {
+                const style = {
+                    top: key.pos.y * keySize,
+                    left: (flipped ? state.keyboard.bounds.max.x - key.pos.x - key.size.w : key.pos.x) * keySize,
+                };
 
-			// Only apply rotation if needed.
-			if (key.angle != 0) {
-				const rotateString = 'rotate(' + key.angle + 'deg)';
-				style.WebkitTransform = rotateString;
-				style.MozTransform = rotateString;
-				style.msTransform = rotateString;
-				style.transform = rotateString;
-			}
+                // Only apply rotation if needed.
+                if (key.angle != 0) {
+                    const rotateString = 'rotate(' + key.angle + 'deg)';
+                    style.WebkitTransform = rotateString;
+                    style.MozTransform = rotateString;
+                    style.msTransform = rotateString;
+                    style.transform = rotateString;
+                }
 
-			const blockStyle = {
-				width: key.size.w * keySize - 20,
-				height: key.size.h * keySize - 12,
-				lineHeight: key.size.h * keySize - 9 + 'px'
-			};
+                const blockStyle = {
+                    width: key.size.w * keySize - 20,
+                    height: key.size.h * keySize - 12,
+                    lineHeight: key.size.h * keySize - 9 + 'px'
+                };
 
-			return <div
-				className='display-keycode'
-				key={ index }
-				style={ style }>
-				<div
-					className='display-keycode-block'
-					style={ blockStyle }>
-					{ key.keycodes[layer].getName() }
-				</div>
-			</div>;
-		});
+                return <div
+                    className='display-keycode'
+                    key={ index }
+                    style={ style }>
+                    <div
+                        className='display-keycode-block'
+                        style={ blockStyle }>
+                        { key.keycodes[layer].getName() }
+                    </div>
+                </div>;
+            });
 
 		return <div className='display-inner'>
 			{ keys }

@@ -31,6 +31,7 @@ class Wiring extends React.Component {
 					for (const key of keys) {
 						for (const rowKey of prevRow) {
 							wires.push(<Wire col
+                                visible={ (!rowKey.layout || rowKey.layoutOption === state.ui.get(`layout:${rowKey.layout}`)) && (!key.layout || key.layoutOption === state.ui.get(`layout:${key.layout}`)) }
 								state={ state }
 								p1={ key.center }
 								p2={ rowKey.center }
@@ -48,6 +49,7 @@ class Wiring extends React.Component {
 					for (const key of keys) {
 						for (const colKey of prevCol) {
 							wires.push(<Wire row
+                                visible={ (!colKey.layout || colKey.layoutOption === state.ui.get(`layout:${colKey.layout}`)) && (!key.layout || key.layoutOption === state.ui.get(`layout:${key.layout}`))}
 								state={ state }
 								p1={ key.center }
 								p2={ colKey.center }
@@ -98,16 +100,24 @@ class Wiring extends React.Component {
 		}
 
 		return <div className='display-inner'>
-			{ keyboard.keys.map((key, index) => {
-				// Draw a pad on each key.
-				return <div
-					className='display-pad'
-					style={{
-						top: key.center.y * keySize,
-						left: (flipped ? keyboard.bounds.max.x - key.center.x : key.center.x) * keySize
-					}}
-					key={ index }/>
-			}) }
+			{ keyboard.keys
+                .filter((key) => {
+                    if (!key.layout && !key.layoutOption)
+                        return true
+                    
+                    return key.layoutOption === state.ui.get(`layout:${key.layout}`)
+                })
+                .map((key, index) => {
+                    // Draw a pad on each key.
+                    return <div
+                        className='display-pad'
+                        style={{
+                            top: key.center.y * keySize,
+                            left: (flipped ? keyboard.bounds.max.x - key.center.x : key.center.x) * keySize
+                        }}
+                        key={ index }/>
+                })
+            }
 			{ wires }
 			{ labels }
 		</div>;
