@@ -1,13 +1,13 @@
 module.exports = `(module Diode_SMD:D_SOD-123 (layer B.Cu) (tedit 561B6A12) (tstamp <%= data.key.id.toString(16) %>1)
     (at
-    <%= data.x - 1 %>
-    <%= data.y + 0.5 %>
+    <%= data.x + 3.1 %>
+    <%= data.y + 1 %>
     <%= data.rotation %>)
     (descr SOD-123)
     (tags SOD-123)
     (path <%= data.kicadReference(data.key.id + "0") %>)
     (attr smd)
-    (fp_text reference D_<%= data.key.id %> (at 0 2 <%= data.rotation %>) (layer B.SilkS)
+    (fp_text reference D<%= data.key.id %> (at 0 2 <%= data.rotation %>) (layer B.SilkS)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (fp_text value D (at 0 -2.1 <%= data.rotation %>) (layer B.Fab)

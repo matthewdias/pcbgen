@@ -32,7 +32,10 @@ class PCBGenerator extends Generator {
             for (let col = 0; col < keyboard.cols; col ++) {
                 const keys = keyboard.wiring[row + ',' + col];
                 if (keys) {
-                    keys.forEach(k => {
+                    const diode     = new Diode(keys[0], nets);
+                    modules.push(diode.render(keys[0].pos.x, keys[0].pos.y, 90));
+
+                    keys.forEach((k, index) => {
                         let name = formatName(k.legend);
                         while (nameSet.has(name)) {
                             const num = name.replace(/^\D+/g, '');
@@ -43,13 +46,10 @@ class PCBGenerator extends Generator {
                         nameSet.add(name);
                         k.name = name;
                         const theSwitch = new Switch(k, nets, this.leds);
-                        const diode     = new Diode(k, nets);
                         theSwitch.setPad(1, `col${col}`);
                         theSwitch.connectPads(2, diode, 2);
-                        
+
                         modules.push(theSwitch.render(k.pos.x, k.pos.y, k.rotation));
-                        const dx = k.pos.x + k.size.w - 0.5;
-                        modules.push(diode.render(dx, k.pos.y, 90));
                     });
                 }
             }

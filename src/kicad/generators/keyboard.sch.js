@@ -10,6 +10,7 @@ class SchematicsGenerator extends Generator {
     
     renderMatrix(components) {
         const switchTpl = require('./templates/keyboard.sch/switch');
+        const diodeTpl = require('./templates/keyboard.sch/diode');
         const rowLabelTpl = require('./templates/keyboard.sch/row-label');
         const colLabelTpl = require('./templates/keyboard.sch/col-label');
         const wiringTpl = require('./templates/keyboard.sch/wiring');
@@ -42,7 +43,7 @@ class SchematicsGenerator extends Generator {
                 const x = 1400 + (col * 1000);
                 const y = 1000 + (row * 1000);
                 if (keys) {
-                    keys.forEach(key => {
+                    keys.forEach((key, index) => {
                         // makes sure the key name is unique
                         let name = formatName(key.legend);
                         while (nameSet.has(name)) {
@@ -52,12 +53,34 @@ class SchematicsGenerator extends Generator {
                             name = `${prefix}${i}`;
                         }
                         nameSet.add(name);
-                        
                         // renders the switch
-                        const id = `${key.id.toString(16)}`;
-                        const data = { key, name, id, x, y };
+                        const data = {key, name, x, y}
+
+                        if (index > 0) {
+                            data.x = x - 250
+                            data.y = y - 100
+                            data.wires = `
+Wire Wire Line
+    ${data.x - 50} ${data.y + 250} ${data.x + 200} ${data.y + 250}
+Wire Wire Line
+    ${data.x - 50} ${data.y + 150} ${data.x - 50} ${data.y + 250}
+Connection ~ ${data.x + 200} ${data.y + 250}
+Wire Wire Line
+    ${data.x + 400} ${data.y - 50} ${data.x + 400} ${data.y + 50}
+Connection ~ ${data.x + 400} ${data.y + 50}
+                            `.trim()
+                        } else {
+                            data.wires = `Connection ~ ${x + 400} ${y - 50}`
+                        }
+                        
                         const theSwitch = ejs.render(switchTpl, { data, keyboard });
                         components.push(theSwitch);
+
+                        // renders the diode
+                        if (index === 0) {
+                            const theDiode = ejs.render(diodeTpl, { data, keyboard })
+                            components.push(theDiode);
+                        }
                     });
                     lastX = x;
                     

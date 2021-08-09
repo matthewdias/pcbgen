@@ -130,6 +130,18 @@ class Key {
 		this.keyboard.updateWiring();
 	}
 
+    get rowHex() {
+        return this.toExtendedHex(this._row)
+    }
+    get colHex() {
+        return this.toExtendedHex(this._col)
+    }
+
+    toExtendedHex(decimal) {
+        if (decimal < 10) return decimal
+        return String.fromCharCode(55 + decimal)
+    }
+
 	/*
 	 * Guess the legend of the key.
 	 */

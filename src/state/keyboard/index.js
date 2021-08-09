@@ -269,6 +269,13 @@ class Keyboard {
 			this.wiring[k].push(key);
 		}
 
+        Object.keys(this.wiring).forEach(position => {
+            const keys = this.wiring[position]
+            keys.forEach((key, index) => {
+                key.matrixPos = `${key.rowHex}${key.colHex}${(keys.length > 1 ? `_${index}` : '')}`
+            })
+        })
+
 		this.verify();
 
 		// Update the state.
