@@ -66,6 +66,7 @@ class Settings extends React.Component {
 
 		return <div className='pane-settings'>
 			Configure your settings.
+
 			<div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Keyboard Name</h2>
 			<input
@@ -76,6 +77,7 @@ class Settings extends React.Component {
 			<Help>
 				Give your keyboard a name!
 			</Help>
+
             <div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Firmware Author</h2>
 			<input
@@ -86,6 +88,7 @@ class Settings extends React.Component {
 			<Help>
 				Name to list in C files as copyright owner
 			</Help>
+
             <div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Vendor ID 0x</h2>
 			<input
@@ -96,6 +99,7 @@ class Settings extends React.Component {
 			<Help>
 				Unique 4-digit Hex code for vendor
 			</Help>
+
             <div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Product ID 0x</h2>
 			<input
@@ -106,6 +110,7 @@ class Settings extends React.Component {
 			<Help>
 				Unique 4-digit Hex code for product
 			</Help>
+
             <div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Device Ver 0x</h2>
 			<input
@@ -116,6 +121,7 @@ class Settings extends React.Component {
 			<Help>
 				4-digit Hex code for version
 			</Help>
+
             <div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Manufacturer</h2>
 			<input
@@ -123,6 +129,25 @@ class Settings extends React.Component {
 				type='text'
 				value={ keyboard.settings.manufacturer }
 				onChange={ e => keyboard.setSetting('manufacturer', e.target.value) }/>
+            <Help>
+				Who makes this keyboard
+			</Help>
+
+            <div style={{ height: '0.5rem' }}/>
+			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Switch Footprint</h2>
+            <select
+                style={{ width: '8rem' }}
+                value={ keyboard.settings.switchType }
+                onChange={ e => keyboard.setSetting('switchType', parseInt(e.target.value))}>
+                    <option value={C.SWITCH_MX}>MX</option>
+                    <option value={C.SWITCH_HOTSWAP}>Hotswap</option>
+                    <option value={C.SWITCH_ALPS}>Alps</option>
+                    <option value={C.SWITCH_HYBRID}>MX/Alps Hybrid</option>
+            </select>
+            <Help>
+				What kind of switch footprint to use on the PCB
+			</Help>
+
 			<div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>WS2812 LEDs</h2>
 			<div style={{ width: '8rem', display: 'inline-block', textAlign: 'left' }}>
@@ -135,6 +160,7 @@ class Settings extends React.Component {
 			<Help>
 				The number of WS2812 LEDs, if any.
 			</Help>
+
 			<div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Backlight Levels</h2>
 			<div style={{ width: '8rem', display: 'inline-block', textAlign: 'left' }}>
@@ -148,6 +174,7 @@ class Settings extends React.Component {
 			<Help>
 				The number of backlight levels.
 			</Help>
+            
 			<div style={{ height: '1.5rem' }}/>
 			Save your layout.
 			<div style={{ height: '0.5rem' }}/>

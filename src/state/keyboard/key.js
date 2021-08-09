@@ -142,6 +142,31 @@ class Key {
         return String.fromCharCode(55 + decimal)
     }
 
+    get library() {
+        switch (this.keyboard.settings.switchType) {
+            case C.SWITCH_MX:
+                return 'MX_Only'
+            case C.SWITCH_HOTSWAP:
+                return 'MX_Only'
+            case C.SWITCH_ALPS:
+                return 'Alps_Only'
+            case C.SWITCH_HYBRID:
+                return 'MX_Alps_Hybrid'
+        }
+    }
+    get footprint() {
+        switch (this.keyboard.settings.switchType) {
+            case C.SWITCH_MX:
+                return `MXOnly-${this.size.w}U-NoLED`
+            case C.SWITCH_HOTSWAP:
+                return `MXOnly-${this.size.w}U-Hotswap`
+            case C.SWITCH_ALPS:
+                return `ALPS-${this.size.w}U`
+            case C.SWITCH_HYBRID:
+                return `MX-${this.size.w}U-NoLED`
+        }
+    }
+
 	/*
 	 * Guess the legend of the key.
 	 */

@@ -8,7 +8,7 @@ U 1 1 <%= data.key.id %>1
 P <%= x %> <%= y %>
 F 0 "K<%= data.key.id %>" H <%= x %> <%= y + 200 %> 60  0000 C CNN
 F 1 "<%= data.key.size.w %>U" H <%= x %> <%= y - 100 %> 60  0001 C CNN
-F 2 "MX_Alps_Hybrid:MX-<%= data.key.size.w %>U-NoLED" H <%= x %> <%= y %> 60  0001 C CNN
+F 2 "<%= data.key.library %>:<%= data.key.footprint %>" H <%= x %> <%= y %> 60  0001 C CNN
 F 3 "" H <%= x %> <%= y %> 60  0000 C CNN
 F 4 "<%= data.key.matrixPos %>" H <%= x %> <%= y %> 40  0000 C CNN "Matrix Position (do not modify)"
 	1    <%= x %> <%= y %>

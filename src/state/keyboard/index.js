@@ -47,6 +47,7 @@ class Keyboard {
             productId: '6060',
             deviceVer: '0001',
             manufacturer: '',
+            switchType: C.SWITCH_MX,
 			rgbNum: 0,
 			backlightLevels: 3
 		};

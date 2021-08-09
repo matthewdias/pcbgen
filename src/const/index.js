@@ -36,6 +36,12 @@ const C = {
 	CONTROLLER_ATMEGA32U4: 1,
 	CONTROLLER_AT90USB1286: 2,
 
+    // Switch types.
+    SWITCH_MX: 0,
+    SWITCH_HOTSWAP: 1,
+    SWITCH_ALPS: 2,
+    SWITCH_HYBRID: 3,
+
 	// Pins.
 	PINS: {
 		0: [ // CONTROLLER_ATMEGA32U2
