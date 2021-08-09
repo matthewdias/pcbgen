@@ -101,6 +101,9 @@ class Key {
 		};
 		this.center = Utils.rotateAboutPoint(center.x, center.y, rotateX, rotateY, angle);
 
+        // Determine if reversed stabs.
+        this.getReversedStabs(state.p);
+
 		// Define wiring variables.
 		this._row = 0;
 		this._col = 0;
@@ -157,14 +160,24 @@ class Key {
     get footprint() {
         switch (this.keyboard.settings.switchType) {
             case C.SWITCH_MX:
-                return `MXOnly-${this.size.w}U-NoLED`
+                return `MXOnly-${this.size.w}U${this.size.w == 6 ? '-Centered' : ''}${this.reversedStabs ? '-ReversedStabilizers' : ''}-NoLED`
             case C.SWITCH_HOTSWAP:
-                return `MXOnly-${this.size.w}U-Hotswap`
+                return `MXOnly-${this.size.w}U${this.size.w == 6 ? '-Centered' : ''}-Hotswap${this.reversedStabs ? '-ReversedStabilizers' : ''}`
             case C.SWITCH_ALPS:
-                return `ALPS-${this.size.w}U`
+                return `ALPS-${this.size.w}U${this.size.w == 6 ? '-Centered' : ''}`
             case C.SWITCH_HYBRID:
-                return `MX-${this.size.w}U-NoLED`
+                return `MX-${this.size.w}U${this.size.w == 6 ? '-Centered' : ''}${this.reversedStabs ? '-ReversedStabilizers' : ''}-NoLED`
         }
+    }
+
+    getReversedStabs(p) {
+        if (!p) {
+            this.reversedStabs = false
+            return
+        }
+
+        const [profile, row] = p.split(' ')
+        this.reversedStabs = (row === 'SPACE') && (this.size.w >= 2)
     }
 
 	/*

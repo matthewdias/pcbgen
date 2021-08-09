@@ -1,4 +1,4 @@
-module.exports = `(module MX_Alps_Hybrid:MX-<%= data.key.size.w %>U<% if (data.key.size.w == 6) {%>-Centered<%}%>-NoLED (layer F.Cu) (tedit 5A9F5203)
+module.exports = `(module MX_Alps_Hybrid:MX-<%= data.key.size.w %>U<% if (data.key.size.w == 6) {%>-Centered<%}%><% if (data.key.reversedStabs) {%>-ReversedStabilizers<%}%>-NoLED (layer F.Cu) (tedit 5A9F5203)
   (tstamp <%= data.key.id.toString(16) %>0)
   (at
   <%= data.x %>
@@ -46,13 +46,13 @@ module.exports = `(module MX_Alps_Hybrid:MX-<%= data.key.size.w %>U<% if (data.k
   (pad "" np_thru_hole circle (at -5.08 0 48.0996) (size 1.75 1.75) (drill 1.75) (layers *.Cu *.Mask))
   (pad "" np_thru_hole circle (at 5.08 0 48.0996) (size 1.75 1.75) (drill 1.75) (layers *.Cu *.Mask))
 <% } %>
-<% if (data.key.size.w == 2) { %>  (pad "" np_thru_hole circle (at -11.938 -6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
-(pad "" np_thru_hole circle (at 11.938 -6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
-(pad "" np_thru_hole circle (at -11.938 8.255) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))
-(pad "" np_thru_hole circle (at 11.938 8.255) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))<% } %>
-<% if (data.key.size.w > 2 && data.key.size.w < 9) { %>  (pad "" np_thru_hole circle (at -<%= (data.key.size.w - 1) * 19.05 / 2 %> -6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
-(pad "" np_thru_hole circle (at <%= (data.key.size.w - 1) * 19.05 / 2 %> -6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
-(pad "" np_thru_hole circle (at -<%= (data.key.size.w - 1) * 19.05 / 2 %> 8.255) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))
-(pad "" np_thru_hole circle (at <%= (data.key.size.w - 1) * 19.05 / 2 %> 8.255) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))<% } %>
+<% if (data.key.size.w == 2) { %>  (pad "" np_thru_hole circle (at -11.938 <%if(data.key.reversedStabs){%><%}else{%>-<%}%>6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
+(pad "" np_thru_hole circle (at 11.938 <%if(data.key.reversedStabs){%><%}else{%>-<%}%>6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
+(pad "" np_thru_hole circle (at -11.938 <%if(data.key.reversedStabs){%>-<%}%>8.255) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))
+(pad "" np_thru_hole circle (at 11.938 <%if(data.key.reversedStabs){%>-<%}%>8.255) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))<% } %>
+<% if (data.key.size.w > 2 && data.key.size.w < 9) { %>  (pad "" np_thru_hole circle (at -<%= (data.key.size.w - 1) * 19.05 / 2 %> <%if(data.key.reversedStabs){%><%}else{%>-<%}%>6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
+(pad "" np_thru_hole circle (at <%= (data.key.size.w - 1) * 19.05 / 2 %> <%if(data.key.reversedStabs){%><%}else{%>-<%}%>6.985) (size 3.048 3.048) (drill 3.048) (layers *.Cu *.Mask))
+(pad "" np_thru_hole circle (at -<%= (data.key.size.w - 1) * 19.05 / 2 %> <%if(data.key.reversedStabs){%>-<%}%>8.255) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))
+(pad "" np_thru_hole circle (at <%= (data.key.size.w - 1) * 19.05 / 2 %> <%if(data.key.reversedStabs){%>-<%}%>8.255) (size 3.9878 3.9878) (drill 3.9878) (layers *.Cu *.Mask))<% } %>
 )
 `;
