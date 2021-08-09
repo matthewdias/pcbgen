@@ -1,7 +1,7 @@
 {
-	"name": "qmkbuilder",
-	"version": "1.0.0",
-	"description": "QMK Firmware Builder",
+	"name": "pcbgen",
+	"version": "0.1.0",
+	"description": "KiCad PCB and QMK Firmware generator",
 	"main": "index.js",
 	"scripts": {
 		"build": "cross-env NODE_PATH=./src node index.js",
@@ -11,14 +11,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ruiqimao/qmkbuilder.git"
+		"url": "git+https://github.com/matthewdias/pcbgen.git"
 	},
-	"author": "ruiqimao",
-	"license": "ISC",
+	"author": "matthewdias",
+	"license": "GPL-3.0",
 	"bugs": {
-		"url": "https://github.com/ruiqimao/qmkbuilder/issues"
+		"url": "https://github.com/matthewdias/pcbgen/issues"
 	},
-	"homepage": "https://github.com/ruiqimao/qmkbuilder#readme",
+	"homepage": "https://github.com/matthewdias/pcbgen#readme",
 	"dependencies": {
 		"babel": "^6.5.2",
 		"babel-preset-es2015": "^6.18.0",

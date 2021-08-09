@@ -765,6 +765,21 @@ select {
 	text-align: center;
 }
 
+.tutorial {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tutorial-text {
+    width: 600px;
+    font-family: Lato;
+}
+
+.tutorial-image {
+    width: 600px;
+} 
 
 .footer {
 	text-align: center;
