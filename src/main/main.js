@@ -95,6 +95,15 @@ class Main extends React.Component {
 				onClick={ this.useKLE }>
 				Import
 			</button>
+
+            <div className="tutorial">
+                <p className="tutorial-text">
+                    To create a layout option, annotate the layout name in the left front legend, and the layout option name in the right front legend of all the associated keys.
+                    <br/><br/>
+                    To stabilized keys with reversed stabilizer orientations, mark the key row as a spacebar. (Profile does not matter)
+                </p>
+                <img className="tutorial-image" src="https://i.imgur.com/Pchs8W7.png" />
+            </div>
 		</div>;
 	}
 
