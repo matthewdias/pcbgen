@@ -19,17 +19,8 @@ class Pins extends React.Component {
 				style={{ width: '10rem' }}
 				value={ keyboard.controller }
 				onChange={ e => keyboard.controller = parseInt(e.target.value) }>
-				<option value={ C.CONTROLLER_ATMEGA32U2 }>ATmega32U2</option>
 				<option value={ C.CONTROLLER_ATMEGA32U4 }>ATmega32U4</option>
-				<option value={ C.CONTROLLER_AT90USB1286 }>AT90USB1286</option>
 			</select>
-			<Help>
-				<strong>ATmega32U2</strong>: Alps64
-				<br/>
-				<strong>ATmega32U4</strong>: Teensy 2.0, Pro Micro, GH60 (Most Common)
-				<br/>
-				<strong>AT90USB1286</strong>: Teensy++ 2.0
-			</Help>
 			<div style={{ height: '1.5rem' }}/>
 			Configure the row and column pins.
 			<div style={{ height: '0.5rem' }}/>

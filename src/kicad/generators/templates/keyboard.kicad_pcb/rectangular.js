@@ -1,17 +1,18 @@
 const Component = require('./component');
 
 class Rectangular extends Component {
-  constructor(kb, type, name) {
+  constructor(kb, type, name, radius) {
     super(type, name);
-    this.x = 0;
-    this.y = 0;
-    this.x1 = (kb.bounds.max.x * 1905)/100;
-    this.y1 = (kb.bounds.max.y * 1905)/100;
+    this.x = (1905)/100;
+    this.y = (1905)/100;
+    this.x1 = ((kb.bounds.max.x + 1) * 1905)/100;
+    this.y1 = ((kb.bounds.max.y + 1) * 1905)/100;
+    this.radius = radius;
   }
 
   getAdditionalData() {
-    const { x1, y1 } = this;
-    return { x1, y1 };
+    const { x1, y1, radius } = this;
+    return { x1, y1, radius };
   }
 
   render(gap=0) {

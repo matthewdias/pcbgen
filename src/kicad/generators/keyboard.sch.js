@@ -3,6 +3,7 @@ const Generator = require('../../files/generators/index');
 const formatName = require('./name');
 const genTstamp = require('./tstamp');
 const pinPadMap = require('./pin-pad-map');
+const C = require('const');
 
 class SchematicsGenerator extends Generator {
     
@@ -22,7 +23,7 @@ class SchematicsGenerator extends Generator {
         for (let row = 0; row < keyboard.rows; row ++) {
             // row label
             const lx = 1500;
-            const ly = 1000 + (row * 1000);
+            const ly = 9000 + (row * 1000);
             const data = { row, x: lx, y: ly };
             components.push(ejs.render(rowLabelTpl, { data }));
             
@@ -33,7 +34,7 @@ class SchematicsGenerator extends Generator {
                 // column label
                 if (row === 0) {
                     const cx = 1500 + (col * 1000);
-                    const cy = 1000;
+                    const cy = 9000;
                     const data = { col, x: cx, y: cy };
                     components.push(ejs.render(colLabelTpl, { data }));
                 }
@@ -41,7 +42,7 @@ class SchematicsGenerator extends Generator {
                 // iterate through all the keys on this particular row/col
                 const keys = keyboard.wiring[row + ',' + col];
                 const x = 1400 + (col * 1000);
-                const y = 1000 + (row * 1000);
+                const y = 9000 + (row * 1000);
                 if (keys) {
                     keys.forEach((key, index) => {
                         // makes sure the key name is unique
@@ -98,7 +99,18 @@ Connection ~ ${data.x + 400} ${data.y + 50}
             const cx = 1500 + (col * 1000) + 300;
             const cy = lastColY[col];
             const data = { col, x: cx, y: cy };
-            components.push(ejs.render(wiringTpl, { x0: cx, y0: cy - 350, x1: cx, y1: 1000 }));
+            components.push(ejs.render(wiringTpl, { x0: cx, y0: cy - 350, x1: cx, y1: 9000 }));
+        }
+    }
+
+    renderController(components, controller) {
+        const controller32u4 = require('./templates/keyboard.sch/32u4.sch');
+
+        switch(controller) {
+            case C.CONTROLLER_ATMEGA32U4: {
+                components.push(ejs.render(controller32u4))
+                break;
+            }
         }
     }
     
@@ -106,6 +118,7 @@ Connection ~ ${data.x + 400} ${data.y + 50}
         const components = [];
         
         this.renderMatrix(components);
+        this.renderController(components, this.keyboard.controller)
         
         return {
             'components': components.join('').trim(),

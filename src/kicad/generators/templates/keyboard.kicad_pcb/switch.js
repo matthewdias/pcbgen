@@ -34,8 +34,8 @@ class Switch extends Component {
     return {
       key: this.key,
       leds: this.leds,
-      x: ((x + 0.5 + ((this.key.size.w-1)/2)) * 1905) / 100,
-      y: ((y + 0.5) * 1905) / 100,
+      x: ((x + 1.5 + ((this.key.size.w-1)/2)) * 1905) / 100,
+      y: ((y + 1.5) * 1905) / 100,
     };
   }
 }

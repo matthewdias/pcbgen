@@ -11,8 +11,8 @@ class Diode extends Component {
   getAdditionalData(x, y, options) {
     return {
       key: this.key,
-      x: ((x + (0.5 * this.key.size.w)) * 1905) / 100,
-      y: ((y + (0.5 * this.key.size.h)) * 1905) / 100,
+      x: ((x + 1 + (0.5 * this.key.size.w)) * 1905) / 100,
+      y: ((y + 1 + (0.5 * this.key.size.h)) * 1905) / 100,
     };
   }
 }

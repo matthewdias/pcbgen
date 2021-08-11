@@ -3,16 +3,18 @@ const Nets = require('./templates/keyboard.kicad_pcb/nets');
 const Switch = require('./templates/keyboard.kicad_pcb/switch');
 const Diode = require('./templates/keyboard.kicad_pcb/diode');
 const Frame = require('./templates/keyboard.kicad_pcb/frame');
-const Plane = require('./templates/keyboard.kicad_pcb/plane');
-const Crystal = require('./templates/keyboard.kicad_pcb/crystal');
-const Cap = require('./templates/keyboard.kicad_pcb/cap');
-const Resistor = require('./templates/keyboard.kicad_pcb/resistor');
-const Reset = require('./templates/keyboard.kicad_pcb/reset');
-const Micro = require('./templates/keyboard.kicad_pcb/micro');
-const USB = require('./templates/keyboard.kicad_pcb/usb');
+const Controller32u4 = require('./templates/keyboard.kicad_pcb/32u4');
+// const Plane = require('./templates/keyboard.kicad_pcb/plane');
+// const Crystal = require('./templates/keyboard.kicad_pcb/crystal');
+// const Cap = require('./templates/keyboard.kicad_pcb/cap');
+// const Resistor = require('./templates/keyboard.kicad_pcb/resistor');
+// const Reset = require('./templates/keyboard.kicad_pcb/reset');
+// const Micro = require('./templates/keyboard.kicad_pcb/micro');
+// const USB = require('./templates/keyboard.kicad_pcb/usb');
 
 const formatName = require('./name');
 const pinPadMap = require('./pin-pad-map');
+const C = require('../../const');
 
 class PCBGenerator extends Generator {
     
@@ -23,7 +25,7 @@ class PCBGenerator extends Generator {
         const nets = new Nets();
         const nameSet = new Set();
         const modules = [];
-        const gap = 4;
+        const gap = 0;
         
         [...Array(keyboard.cols+1)].forEach((_, i) => nets.add(`col${i}`));
         [...Array(keyboard.rows+1)].forEach((_, i) => nets.add(`row${i}`));
@@ -54,8 +56,16 @@ class PCBGenerator extends Generator {
                 }
             }
         }
+
+        switch(this.keyboard.controller) {
+            case C.CONTROLLER_ATMEGA32U4: {
+                Controller32u4.nets.forEach(n => nets.add(n));
+                modules.push(Controller32u4.template.replace(new RegExp('<net (.+)>', 'g'), (match, netName) => nets.get(netName.replace(new RegExp('"', 'g'), ''))));
+                break;
+            }
+        }
         
-        modules.push(new Frame(keyboard).render(gap));
+        modules.push(new Frame(keyboard, "frame", 19.05/8).render(gap));
         
         return {
             'nets':        nets.array.map(n => `  ${nets.format(n)}`).join('\n'),
