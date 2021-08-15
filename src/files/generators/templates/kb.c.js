@@ -1,4 +1,5 @@
 module.exports = `
+
 /*
 Copyright %current_year% %author%
 
@@ -16,15 +17,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#include "%slug%.h"
 
-#include "quantum.h"
-
-#define XXX KC_NO
-
-#define LAYOUT_all( \\
-%keymap_1%
-) { \\
-%keymap_2%
-}
 `.trim();

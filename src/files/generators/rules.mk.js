@@ -18,6 +18,7 @@ class RulesMK extends Generator {
 
 		return {
 			'mcu': mcu,
+            'bootmagic': 'lite',
 			'use_backlight': keyboard.pins.led ? 'yes' : 'no ',
 			'use_rgb': keyboard.pins.rgb ? 'yes' : 'no '
 		};

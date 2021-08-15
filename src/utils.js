@@ -70,7 +70,7 @@ class Utils {
 	 * @return {String} The filesystem friendly name.
 	 */
 	static generateFriendly(name) {
-		return name.replace(/[^a-z0-9]/gi, '').toLowerCase();
+		return name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
 	}
 
 	/*

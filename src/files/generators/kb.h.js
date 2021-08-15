@@ -11,23 +11,17 @@ class KeyboardH extends Generator {
 
 		// Generate the keymaps.
 		const keymap1 = (() => {
-			const rowLength = String(keyboard.rows).length;
-			const colLength = String(keyboard.cols).length;
-			const space = ' '.repeat(rowLength + colLength + 3);
-
 			let result = '';
 
 			for (let row = 0; row < keyboard.rows; row ++) {
-				const sRow = Utils.leftPad(String(row), rowLength, '0');
-
 				let rowString = '';
 				for (let col = 0; col < keyboard.cols; col ++) {
-					const sCol = Utils.leftPad(String(col), colLength, '0');
+                    const keys = keyboard.wiring[row + ',' + col];
 
-					if (keyboard.wiring[row + ',' + col]) {
-						rowString += 'K' + sRow + sCol + ', ';
+					if (keys) {
+						rowString += 'K' + keys[0].rowHex + keys[0].colHex + ', ';
 					} else {
-						rowString += space;
+						rowString += '     ';
 					}
 				}
 
@@ -43,23 +37,17 @@ class KeyboardH extends Generator {
 		})();
 
 		const keymap2 = (() => {
-			const rowLength = String(keyboard.rows).length;
-			const colLength = String(keyboard.cols).length;
-			const cellLength = Math.max(rowLength + colLength + 1, 'KC_NO'.length) + 2;
-
 			let result = '';
 
 			for (let row = 0; row < keyboard.rows; row ++) {
-				const sRow = Utils.leftPad(String(row), rowLength, '0');
-
 				let rowString = '';
 				for (let col = 0; col < keyboard.cols; col ++) {
-					const sCol = Utils.leftPad(String(col), colLength, '0');
+                    const keys = keyboard.wiring[row + ',' + col];
 
-					if (keyboard.wiring[row + ',' + col]) {
-						rowString += Utils.rightPad('K' + sRow + sCol + ', ', cellLength);
+					if (keys) {
+						rowString += 'K' + keys[0].rowHex + keys[0].colHex + ', ';
 					} else {
-						rowString += Utils.rightPad('KC_NO' + ', ', cellLength);
+						rowString += 'XXX, ';
 					}
 				}
 

@@ -2,7 +2,6 @@ const React = require('react');
 
 const Files = require('files');
 const KiCad = require('kicad');
-const Utils = require('utils');
 
 const Request = require('superagent');
 
@@ -53,7 +52,7 @@ class Compile extends React.Component {
 				}
 
 				// Generate a friendly name.
-				const friendly = keyboard.settings.name ? Utils.generateFriendly(keyboard.settings.name) : 'layout';
+				const friendly = keyboard.settings.name ? keyboard.slug : 'layout';
 
 				// Download the hex file.
 				const blob = new Blob([res.hex], { type: 'application/octet-stream' });
@@ -74,8 +73,6 @@ class Compile extends React.Component {
 		// Generate source files.
 		const files = Files.generate(keyboard);
 
-        console.log(files)
-
 		// Get the firmware stencil.
 		JSZipUtils.getBinaryContent('/files/firmware.zip', (err, data) => {
 			if (err) {
@@ -94,9 +91,9 @@ class Compile extends React.Component {
 				// Download the file.
 				zip.generateAsync({ type: 'blob' }).then(blob => {
 					// Generate a friendly name.
-					const friendly = keyboard.settings.name ? Utils.generateFriendly(keyboard.settings.name) : 'firmware';
+					const friendly = keyboard.settings.name ? keyboard.slug : 'layout';
 
-					saveAs(blob, friendly + '.zip');
+					saveAs(blob, friendly + '_firmware' + '.zip');
 
 					// Re-enable buttons.
 					state.ui.set('compile-working', false);
@@ -141,10 +138,9 @@ class Compile extends React.Component {
 				// Download the file.
 				zip.generateAsync({ type: 'blob' }).then(blob => {
 					// Generate a friendly name.
-					const friendly = keyboard.settings.name ?
-						Utils.generateFriendly(keyboard.settings.name) : 'layout';
+					const friendly = keyboard.settings.name ? keyboard.slug : 'layout';
 
-					saveAs(blob, friendly + '.zip');
+					saveAs(blob, friendly + '_pcb' + '.zip');
 
 					// Re-enable buttons.
 					state.ui.set('compile-working', false);

@@ -2,6 +2,7 @@ const Key = require('./key');
 const Keycode = require('./keycode');
 
 const C = require('../../const');
+const Utils = require('../../utils');
 
 class Keyboard {
 
@@ -364,6 +365,10 @@ class Keyboard {
 		// Update the state.
 		this.state.update();
 	}
+
+    get slug() {
+        return Utils.generateFriendly(this.settings.name);
+    }
 
 	/*
 	 * Verify the validity of the keyboard.
