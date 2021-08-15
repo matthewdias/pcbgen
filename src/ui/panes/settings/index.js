@@ -134,6 +134,19 @@ class Settings extends React.Component {
 			</Help>
 
             <div style={{ height: '0.5rem' }}/>
+			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Connector Type</h2>
+            <select
+                style={{ width: '8rem' }}
+                value={ keyboard.settings.connectorType }
+                onChange={ e => keyboard.setSetting('connectorType', parseInt(e.target.value))}>
+                    <option value={C.CONNECTOR_TYPE_C}>USB Type-C</option>
+                    <option value={C.CONNECTOR_JST}>JST (Unified DB)</option>
+            </select>
+            <Help>
+				Which data connector to use
+			</Help>
+
+            <div style={{ height: '0.5rem' }}/>
 			<h2 style={{ width: '8rem', marginRight: '0.8rem' }}>Switch Footprint</h2>
             <select
                 style={{ width: '8rem' }}

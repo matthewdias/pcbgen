@@ -105,10 +105,15 @@ Connection ~ ${data.x + 400} ${data.y + 50}
 
     renderController(components, controller) {
         const controller32u4 = require('./templates/keyboard.sch/32u4.sch');
+        const controller32u4JST = require('./templates/keyboard.sch/32u4-db.sch');
 
         switch(controller) {
             case C.CONTROLLER_ATMEGA32U4: {
-                components.push(ejs.render(controller32u4))
+                if (this.keyboard.settings.connectorType === C.CONNECTOR_JST) {
+                    components.push(ejs.render(controller32u4JST));
+                } else {
+                    components.push(ejs.render(controller32u4));
+                }
                 break;
             }
         }

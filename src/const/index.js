@@ -42,6 +42,10 @@ const C = {
     SWITCH_ALPS: 2,
     SWITCH_HYBRID: 3,
 
+    // Connector types.
+    CONNECTOR_TYPE_C: 0,
+    CONNECTOR_JST: 1,
+
 	// Pins.
 	PINS: {
 		0: [ // CONTROLLER_ATMEGA32U2

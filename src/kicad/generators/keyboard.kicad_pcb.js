@@ -4,6 +4,7 @@ const Switch = require('./templates/keyboard.kicad_pcb/switch');
 const Diode = require('./templates/keyboard.kicad_pcb/diode');
 const Frame = require('./templates/keyboard.kicad_pcb/frame');
 const Controller32u4 = require('./templates/keyboard.kicad_pcb/32u4');
+const Controller32u4JST = require('./templates/keyboard.kicad_pcb/32u4-db');
 // const Plane = require('./templates/keyboard.kicad_pcb/plane');
 // const Crystal = require('./templates/keyboard.kicad_pcb/crystal');
 // const Cap = require('./templates/keyboard.kicad_pcb/cap');
@@ -59,8 +60,10 @@ class PCBGenerator extends Generator {
 
         switch(this.keyboard.controller) {
             case C.CONTROLLER_ATMEGA32U4: {
-                Controller32u4.nets.forEach(n => nets.add(n));
-                modules.push(Controller32u4.template.replace(new RegExp('<net (.+)>', 'g'), (match, netName) => nets.get(netName.replace(new RegExp('"', 'g'), ''))));
+                const controller = this.keyboard.settings.connectorType === C.CONNECTOR_JST
+                    ? Controller32u4JST : Controller32u4;
+                controller.nets.forEach(n => nets.add(n));
+                modules.push(controller.template.replace(new RegExp('<net (.+)>', 'g'), (match, netName) => nets.get(netName.replace(new RegExp('"', 'g'), ''))));
                 break;
             }
         }
