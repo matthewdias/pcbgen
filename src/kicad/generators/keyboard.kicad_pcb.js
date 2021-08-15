@@ -5,6 +5,7 @@ const Diode = require('./templates/keyboard.kicad_pcb/diode');
 const Frame = require('./templates/keyboard.kicad_pcb/frame');
 const Controller32u4 = require('./templates/keyboard.kicad_pcb/32u4');
 const Controller32u4JST = require('./templates/keyboard.kicad_pcb/32u4-db');
+const RGB = require('./templates/keyboard.kicad_pcb/rgb');
 // const Plane = require('./templates/keyboard.kicad_pcb/plane');
 // const Crystal = require('./templates/keyboard.kicad_pcb/crystal');
 // const Cap = require('./templates/keyboard.kicad_pcb/cap');
@@ -67,6 +68,14 @@ class PCBGenerator extends Generator {
                 break;
             }
         }
+
+        if (this.keyboard.settings.rgbNum > 0) {
+            nets.add('RGB');
+            Array.from({ length: this.keyboard.settings.rgbNum }, (_, index) => {
+                const rgb = new RGB(index, nets);
+                modules.push(rgb.render(60 + (index * 10), -18, 0))
+            })
+        }   
         
         modules.push(new Frame(keyboard, "frame", 19.05/8).render(gap));
         

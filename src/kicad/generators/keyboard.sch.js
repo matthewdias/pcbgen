@@ -118,12 +118,28 @@ Connection ~ ${data.x + 400} ${data.y + 50}
             }
         }
     }
+
+    renderRGB(components, rgbNum) {
+        const RGB = require('./templates/keyboard.sch/rgb.js');
+
+        const data = { x: 2450 }
+
+        components.push(ejs.render(RGB.start, data))
+
+        Array.from({ length: rgbNum }, (_, index) => {
+            components.push(ejs.render(RGB.rgb, Object.assign(data, { index })))
+        })
+    }
     
     fillTemplate() {
         const components = [];
         
         this.renderMatrix(components);
         this.renderController(components, this.keyboard.controller)
+
+        if (this.keyboard.settings.rgbNum > 0) {
+            this.renderRGB(components, this.keyboard.settings.rgbNum)
+        }
         
         return {
             'components': components.join('').trim(),
