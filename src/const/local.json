@@ -1,0 +1,4 @@
+{
+	"API": "http://localhost:5004",
+	"PRESETS": "http://localhost:5004/presets/"
+}
