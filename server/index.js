@@ -1,4 +1,4 @@
-const PORT = 5004;
+const PORT = process.env.PORT || 5004;
 const TMP = '/tmp/qmk-';
 
 const Express = require('express');

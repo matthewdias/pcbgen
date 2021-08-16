@@ -111,7 +111,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	PRESETS: Presets,
 
 	// Local settings.
-	LOCAL: Local
+	LOCAL: process.env._ && process.env._.indexOf("heroku") ? {
+        "API": `http://localhost:${process.env.PORT}`,
+        "PRESETS": `http://localhost:${process.env.PORT}/presets/`
+    } : Local
 
 };
 
