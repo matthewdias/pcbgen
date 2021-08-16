@@ -184,7 +184,7 @@ class Compile extends React.Component {
 			<div style={{ height: '0.5rem' }}/>
             <button
 				onClick={ this.downloadZip }>
-				Download Firmware
+				Download Firmware (Experimental)
 			</button>
 		</div>;
 	}

@@ -98,11 +98,28 @@ class Main extends React.Component {
 
             <div className="tutorial">
                 <p className="tutorial-text">
-                    To create a layout option, annotate the layout name in the left front legend, and the layout option name in the right front legend of all the associated keys.
+                    To create a layout option, annotate the layout name in the left front legend, and the layout option name in the right front legend of all the associated keys. Currently layout options must be position to the right of or below the main key area.
                     <br/><br/>
-                    To stabilized keys with reversed stabilizer orientations, mark the key row as a spacebar. (Profile does not matter)
+                    To stabilized keys with reversed stabilizer orientations, mark the key row as a spacebar. (Any key profile will work)
                 </p>
                 <img className="tutorial-image" src="https://i.imgur.com/Pchs8W7.png" />
+                <br/><br/>
+                <h2>TODO</h2>
+                <ul className="tutorial-text">
+                    <li>Sane ordering of keymap.c for odd matrices</li>
+                    <li>Fix layout options that span multiple rows</li>
+                    <li>Generate mcu-side global labels for data pins</li>
+                    <li>Backlight support on PCB</li>
+                    <li>Autorouting/placing</li>
+                    <li>Used pin counter/error</li>
+                    <li>Missing switch footprint error</li>
+                    <li>Config backup</li>
+                    <li>Smarter layout option processing</li>
+                    <li>Layout presets</li>
+                    <li>Via firmware generation</li>
+                    <li>info.json generation</li>
+                    <li>Encoder support</li>
+                </ul>
             </div>
 		</div>;
 	}

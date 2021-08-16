@@ -191,11 +191,11 @@ class Settings extends React.Component {
 			<div style={{ height: '1.5rem' }}/>
 			Save your layout.
 			<div style={{ height: '0.5rem' }}/>
-			<button onClick={ this.save }>
-				Save Configuration
+			<button disabled onClick={ this.save }>
+				Save Configuration (Coming soon)
 			</button>
 			<div style={{ height: '1.5rem' }}/>
-			Check errors and warnings.
+			Check errors and warnings. (Ignore the unique positions error for now)
 			<div style={{ height: '0.5rem' }}/>
 			<div className='pane-settings-list'>
 				{ list }
