@@ -5,6 +5,7 @@ const Express = require('express');
 const BodyParser = require('body-parser');
 const Crypto = require('crypto');
 const Exec = require('child_process').exec;
+const spawn = require('child_process').spawn
 const Fs = require('fs');
 
 const co = require('co');
@@ -22,6 +23,12 @@ app.all('*', (req, res, next) => {
 	res.header('Access-Control-Allow-Headers', 'X-Requested-With');
 	res.header('Access-Control-Allow-Headers', 'Content-Type');
 	next();
+});
+
+app.get('/vial-uid', (req, res) => {
+    const process = spawn('python', ['./vial_generate_keyboard_uid.py'])
+    process.stdout.on('data', data => res.send(String.fromCharCode.apply(null, data)))
+    process.stderr.on('data', data => console.error(String.fromCharCode.apply(null, data)))
 });
 
 // Set up the /build route.

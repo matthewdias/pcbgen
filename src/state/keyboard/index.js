@@ -26,6 +26,7 @@ class Keyboard {
 		this.wiring = {};
 		this._rows = 1;
 		this._cols = 1;
+        this.kleRows = json.length;
 		this._controller = C.CONTROLLER_ATMEGA32U4;
 		this.pins = {
 			row: [],
@@ -110,6 +111,7 @@ class Keyboard {
 
 		// Iterate through all the KLE data.
 		let keyIndex = 0;
+        let rowIndex = 0;
 		for (const row of json) {
 			for (const entry of row) {
 				// Check if the entry is a modifier.
@@ -118,6 +120,7 @@ class Keyboard {
 					for (const mod in entry) {
 						if (mod === 'x' || mod === 'y') {
 							state[mod] += entry[mod]; // x and y are added.
+                            state[mod + 'Offset'] = entry[mod]
 						} else {
 							state[mod] = entry[mod]; // Set the state accordingly.
 						}
@@ -169,7 +172,7 @@ class Keyboard {
                 }
 
 				// Create a new key with the current state.
-				const key = new Key(this, keyIndex ++, entry, Object.assign({}, state));
+				const key = new Key(this, keyIndex ++, entry, Object.assign({ rowIndex }, state));
 				this.keys.push(key);
 
 				// Update bounds.
@@ -188,6 +191,11 @@ class Keyboard {
 				state.y2 = 0;
 				state.w2 = 0;
 				state.h2 = 0;
+                delete state.l;
+                delete state.n;
+                delete state.d;
+                delete state.xOffset;
+                delete state.yOffset;
 
                 // Add any new layouts
                 if (key.layoutOption) {
@@ -206,6 +214,9 @@ class Keyboard {
 
 			// Reset x.
 			state.x = resetX;
+
+            // Increment row tracker.
+            rowIndex++;
 		}
 
 		// Normalize the positions and bounds.

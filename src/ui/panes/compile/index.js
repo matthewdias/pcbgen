@@ -63,15 +63,18 @@ class Compile extends React.Component {
 			});
 	}
 
-	downloadZip() {
+	async downloadZip() {
 		const state = this.props.state;
 		const keyboard = state.keyboard;
 
 		// Disable buttons.
 		state.ui.set('compile-working', true);
 
+        // Get new vial uid.
+        const vialUid = await fetch('/vial-uid').then(response => response.text())
+        
 		// Generate source files.
-		const files = Files.generate(keyboard);
+		const files = Files.generate(keyboard, vialUid);
 
 		// Get the firmware stencil.
 		JSZipUtils.getBinaryContent('/files/firmware.zip', (err, data) => {
