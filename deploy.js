@@ -10,7 +10,7 @@ const b = browserify({
 		plugin: [ errorify ]
 	})
 	.transform('babelify', {
-		presets: [ 'es2015', 'react' ]
+		presets: [ 'babel-preset-env', 'react' ]
 	})
 	.transform({
 		global: true
