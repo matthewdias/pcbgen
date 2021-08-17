@@ -84,7 +84,7 @@ class Main extends React.Component {
 				Upload
 			</button> */}
 			<br/><br/>
-			<h3>Import from keyboard-layout-editor.com</h3>
+			<h3>Import from <a href="http://www.keyboard-layout-editor.com/" target="_blank">keyboard-layout-editor.com</a></h3>
 			<textarea
 				className='kle'
 				placeholder='Paste layout here...'
@@ -98,9 +98,9 @@ class Main extends React.Component {
 
             <div className="tutorial">
                 <p className="tutorial-text">
-                    To create a layout option, annotate the layout name in the left front legend, and the layout option name in the right front legend of all the associated keys. Currently layout options must be position to the right of or below the main key area.
+                    To create a layout option, annotate the layout name in the left front legend, and the layout option name in the right front legend of all the associated keys. Currently layout options must be positioned to the right of or below the main key area.
                     <br/><br/>
-                    To stabilized keys with reversed stabilizer orientations, mark the key row as a spacebar. (Any key profile will work)
+                    To generate stabilized keys with reversed stabilizer orientations, mark the key row as a spacebar. (Any key profile will work)
                 </p>
                 <img className="tutorial-image" src="https://i.imgur.com/Pchs8W7.png" />
                 <br/><br/>
