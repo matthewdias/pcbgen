@@ -1,3 +1,5 @@
+const TerserPlugin = require('terser-webpack-plugin');
+
 module.exports = {
     entry: './src/index.js',
     output: {
@@ -21,7 +23,15 @@ module.exports = {
         fallback: {
             fs: false,
             path: false
+        },
+        alias: {
+            ejs: 'ejs/ejs.min.js'
         }
+    },
+    optimization: {
+        minimizer: [new TerserPlugin({
+            extractComments: false,
+        })],
     },
     target: 'web',
 };
