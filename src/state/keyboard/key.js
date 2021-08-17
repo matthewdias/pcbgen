@@ -1,8 +1,8 @@
-const Utils = require('../../utils');
+import Utils from '../../utils';
 
-const Keycode = require('./keycode');
+import Keycode from './keycode';
 
-const C = require('../../const');
+import C from '../../const';
 
 class Key {
 
@@ -286,4 +286,4 @@ class Key {
 
 }
 
-module.exports = Key;
+export default Key;

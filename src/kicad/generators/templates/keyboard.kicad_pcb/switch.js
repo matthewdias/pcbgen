@@ -1,9 +1,9 @@
-const Component = require('./component');
-const C = require('const');
-const mx = require('./switch-mx.ejs')
-const hotswap = require('./switch-hotswap.ejs')
-const alps = require('./switch-alps.ejs')
-const hybrid = require('./switch-hybrid.ejs')
+import Component from './component';
+import C from '../../../../const';
+import mx from './switch-mx.ejs'
+import hotswap from './switch-hotswap.ejs'
+import alps from './switch-alps.ejs'
+import hybrid from './switch-hybrid.ejs'
 
 class Switch extends Component {
   constructor(key, nets, leds=false) {
@@ -40,4 +40,4 @@ class Switch extends Component {
   }
 }
 
-module.exports = Switch;
+export default Switch;

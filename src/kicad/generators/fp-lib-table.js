@@ -1,8 +1,10 @@
-const Generator = require('../../files/generators/index');
+import Generator from '../../files/generators/index';
+
+import template from './templates/fp-lib-table'
 
 class FpLibTableGenerator extends Generator {
 
-	loadTemplate() { return require('./templates/fp-lib-table'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
 		const keyboard = this.keyboard;
@@ -11,4 +13,4 @@ class FpLibTableGenerator extends Generator {
 
 }
 
-module.exports = FpLibTableGenerator;
+export default FpLibTableGenerator;

@@ -1,4 +1,4 @@
-const Component = require('./component');
+import Component from './component';
 
 class Rectangular extends Component {
   constructor(kb, type, name, radius) {
@@ -24,4 +24,4 @@ class Rectangular extends Component {
   }
 }
 
-module.exports = Rectangular;
+export default Rectangular;

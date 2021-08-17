@@ -1,10 +1,10 @@
-const React = require('react');
+import React from 'react';
 
-const Chooser = require('./chooser');
+import Chooser from './chooser';
 
-const Help = require('ui/elements/help');
+import Help from '../../elements/help';
 
-const C = require('const');
+import C from '../../../const';
 
 class Pins extends React.Component {
 
@@ -123,4 +123,4 @@ class Pins extends React.Component {
 
 }
 
-module.exports = Pins;
+export default Pins;

@@ -1,10 +1,10 @@
-const React = require('react');
+import React from 'react';
 
-const NumberBox = require('ui/elements/numberbox');
-const Help = require('ui/elements/help');
+import NumberBox from '../../elements/numberbox';
+import Help from '../../elements/help';
 
-const C = require('const');
-const Utils = require('utils');
+import C from '../../../const';
+import Utils from '../../../utils';
 
 class Settings extends React.Component {
 
@@ -205,4 +205,4 @@ class Settings extends React.Component {
 
 }
 
-module.exports = Settings;
+export default Settings;

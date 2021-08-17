@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 class NumberBox extends React.Component {
 
@@ -66,4 +66,4 @@ class NumberBox extends React.Component {
 
 }
 
-module.exports = NumberBox;
+export default NumberBox;

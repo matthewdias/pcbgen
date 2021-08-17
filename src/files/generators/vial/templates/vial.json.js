@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 {
   "name": "%name%",
   "vendorId": "0x%vendor_id%",

@@ -1,8 +1,8 @@
-const React = require('react');
+import React from 'react';
 
-const Display = require('ui/display');
-const Panes = require('ui/panes');
-const Layouts = require('ui/layouts');
+import Display from '../ui/display';
+import Panes from '../ui/panes';
+import Layouts from '../ui/layouts';
 
 class Editor extends React.Component {
 
@@ -30,4 +30,4 @@ class Editor extends React.Component {
 
 }
 
-module.exports = Editor;
+export default Editor;

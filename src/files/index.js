@@ -1,11 +1,11 @@
-const RulesMKGenerator = require('./generators/rules.mk');
-const ConfigHGenerator = require('./generators/config.h');
-const KbHGenerator = require('./generators/kb.h');
-const KbCGenerator = require('./generators/kb.c');
-const KeymapCGenerator = require('./generators/keymap.c');
-const VialRulesMKGenerator = require('./generators/vial/rules.mk');
-const VialConfigHGenerator = require('./generators/vial/config.h');
-const VialJSONGenerator = require('./generators/vial/vial.json');
+import RulesMKGenerator from './generators/rules.mk';
+import ConfigHGenerator from './generators/config.h';
+import KbHGenerator from './generators/kb.h';
+import KbCGenerator from './generators/kb.c';
+import KeymapCGenerator from './generators/keymap.c';
+import VialRulesMKGenerator from './generators/vial/rules.mk';
+import VialConfigHGenerator from './generators/vial/config.h';
+import VialJSONGenerator from './generators/vial/vial.json';
 
 class Files {
 
@@ -33,4 +33,4 @@ class Files {
 
 }
 
-module.exports = Files;
+export default Files;

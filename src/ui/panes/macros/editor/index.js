@@ -1,9 +1,9 @@
-const React = require('react');
-const classNames = require('classnames');
+import React from 'react';
+import classNames from 'classnames';
 
-const Action = require('./action');
+import Action from './action';
 
-const C = require('const');
+import C from '../../../../const';
 
 class Editor extends React.Component {
 
@@ -265,4 +265,4 @@ class Editor extends React.Component {
 
 }
 
-module.exports = Editor;
+export default Editor;

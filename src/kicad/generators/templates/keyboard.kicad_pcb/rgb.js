@@ -1,4 +1,6 @@
-const Component = require('./component');
+import Component from './component';
+
+import template from './rgb.ejs'
 
 class RGB extends Component {
   constructor(index, nets) {
@@ -6,7 +8,7 @@ class RGB extends Component {
     this.setPad(1, '+5V');
     this.setPad(3, 'GND');
     this.setPad(4, index == 0 ? 'RGB' : `Net-(RGB${index - 1}-Pad2)`)
-    this.template = require('./rgb.ejs');
+    this.template = template;
     this.index = index;
   }
 
@@ -17,4 +19,4 @@ class RGB extends Component {
   }
 }
 
-module.exports = RGB;
+export default RGB;

@@ -1,8 +1,9 @@
-const Generator = require('../../files/generators/index');
+import Generator from '../../files/generators/index';
 
+import template from './templates/keyboard.pro';
 class ProjectGenerator extends Generator {
 
-	loadTemplate() { return require('./templates/keyboard.pro'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
 		const keyboard = this.keyboard;
@@ -11,4 +12,4 @@ class ProjectGenerator extends Generator {
 
 }
 
-module.exports = ProjectGenerator;
+export default ProjectGenerator;

@@ -1,4 +1,4 @@
-module.exports = `(module Diode_SMD:D_SOD-123 (layer B.Cu) (tedit 561B6A12) (tstamp <%= data.key.id.toString(16) %>1)
+export default `(module Diode_SMD:D_SOD-123 (layer B.Cu) (tedit 561B6A12) (tstamp <%= data.key.id.toString(16) %>1)
     (at
     <%= data.x + 3.1 %>
     <%= data.y + 1 %>

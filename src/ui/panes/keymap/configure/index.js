@@ -1,13 +1,13 @@
-const React = require('react');
+import React from 'react';
 
-const Keycode = require('state/keyboard/keycode');
+import Keycode from '../../../../state/keyboard/keycode';
 
-const Selector = require('./selector');
-const Mods = require('./mods');
+import Selector from './selector';
+import Mods from './mods';
 
-const NumberBox = require('ui/elements/numberbox');
+import NumberBox from '../../../elements/numberbox';
 
-const C = require('const');
+import C from '../../../../const';
 
 class Configure extends React.Component {
 
@@ -147,4 +147,4 @@ class Configure extends React.Component {
 
 }
 
-module.exports = Configure;
+export default Configure;

@@ -1,10 +1,10 @@
-const Generator = require('../index');
+import Generator from '../index';
 
-const C = require('const');
+import template from './templates/rules.mk';
 
 class VialRulesMK extends Generator {
 
-	loadTemplate() { return require('./templates/rules.mk'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
 		return {
@@ -14,4 +14,4 @@ class VialRulesMK extends Generator {
 
 }
 
-module.exports = VialRulesMK;
+export default VialRulesMK;

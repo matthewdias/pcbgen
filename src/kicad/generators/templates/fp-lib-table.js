@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 (fp_lib_table
   (lib (name Alps_Only)(type KiCad)(uri \${KIPRJMOD}/Alps_Only.pretty)(options "")(descr ""))
   (lib (name Kailh_Choc)(type KiCad)(uri \${KIPRJMOD}/Kailh_Choc.pretty)(options "")(descr ""))

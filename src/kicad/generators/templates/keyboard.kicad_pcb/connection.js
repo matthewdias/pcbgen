@@ -1,10 +1,11 @@
-const Element = require('./element');
+import Element from './element';
 
+import template from './connection.ejs'
 class Connection extends Element {
   constructor() {
     super('connection');
-    this.template = require('./connection.ejs');
+    this.template = template;
   }
 }
 
-module.exports = Connection;
+export default Connection;

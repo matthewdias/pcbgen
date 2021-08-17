@@ -1,10 +1,11 @@
-const Component = require('./component');
+import Component from './component';
 
+import template from './crystal.ejs'
 class Crystal extends Component {
   constructor(nets) {
     super('crystal', null, 4, nets, 'X');
-    this.template = require('./crystal.ejs');
+    this.template = template;
   }
 }
 
-module.exports = Crystal;
+export default Crystal;

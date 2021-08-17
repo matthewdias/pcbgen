@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'E6 (INT.6/AIN0)': 1,
   'UVcc': 2,
   'D-': 3,

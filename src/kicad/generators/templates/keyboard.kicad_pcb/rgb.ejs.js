@@ -1,4 +1,4 @@
-module.exports = `
+export default `
   (module LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm (layer B.Cu) (tedit 5AA4B285) (tstamp <%= data.index %>2812)
     (at <%= data.x %> <%= data.y %> <%= data.rotation %>)
     (descr https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf)

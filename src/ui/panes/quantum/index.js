@@ -1,9 +1,9 @@
-const React = require('react');
+import React from 'react';
 
-const CodeMirror = require('react-codemirror');
-require('codemirror/mode/clike/clike');
+import CodeMirror from 'react-codemirror';
+import 'codemirror/mode/clike/clike';
 
-const C = require('const');
+import C from '../../../const';
 
 class Quantum extends React.Component {
 
@@ -38,4 +38,4 @@ class Quantum extends React.Component {
 
 }
 
-module.exports = Quantum;
+export default Quantum;

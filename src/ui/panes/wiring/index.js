@@ -1,9 +1,9 @@
-const React = require('react');
+import React from 'react';
 
-const NumberBox = require('ui/elements/numberbox');
-const Help = require('ui/elements/help');
+import NumberBox from '../../elements/numberbox';
+import Help from '../../elements/help';
 
-const C = require('const');
+import C from '../../../const';
 
 class Wiring extends React.Component {
 
@@ -64,4 +64,4 @@ class Wiring extends React.Component {
 
 }
 
-module.exports = Wiring;
+export default Wiring;

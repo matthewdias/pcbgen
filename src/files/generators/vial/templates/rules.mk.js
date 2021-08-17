@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 
 VIA_ENABLE = yes
 VIAL_ENABLE = yes

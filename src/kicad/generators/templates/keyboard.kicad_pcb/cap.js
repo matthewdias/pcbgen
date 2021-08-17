@@ -1,10 +1,12 @@
-const Component = require('./component');
+import Component from './component';
+
+import template from './cap.ejs'
 
 class Cap extends Component {
   constructor(nets) {
     super('cap', null, 2, nets);
-    this.template = require('./cap.ejs');
+    this.template = template
   }
 }
 
-module.exports = Cap;
+export default Cap;

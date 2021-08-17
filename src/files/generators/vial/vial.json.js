@@ -1,13 +1,13 @@
-const Generator = require('../index');
+import Generator from '../index';
 
-const C = require('const');
+import template from './templates/vial.json'
 
 const temp_states = ['w', 'h', 'x2', 'y2', 'w2', 'h2', 'l', 'n', 'd'];
 const ignored_states = ['c', 'p', 'a'];
 
 class VialJSON extends Generator {
 
-	loadTemplate() { return require('./templates/vial.json'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
         const keyboard = this.keyboard;
@@ -77,4 +77,4 @@ class VialJSON extends Generator {
 
 }
 
-module.exports = VialJSON;
+export default VialJSON;

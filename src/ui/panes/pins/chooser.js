@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-const C = require('const');
+import C from '../../../const';
 
 class Chooser extends React.Component {
 
@@ -25,4 +25,4 @@ class Chooser extends React.Component {
 
 }
 
-module.exports = Chooser;
+export default Chooser;

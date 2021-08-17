@@ -1,9 +1,10 @@
-const Rectangular = require('./rectangular');
+import Rectangular from './rectangular';
 
+import template from './plate.ejs'
 class Plane extends Rectangular {
   constructor(kb, name, layer, gap=2) {
     super(kb, 'plane', name, gap);
-    this.template = require('./plane.ejs');
+    this.template = template;
     this.layer = layer;
   }
 
@@ -12,4 +13,4 @@ class Plane extends Rectangular {
   }
 }
 
-module.exports = Plane;
+export default Plane;

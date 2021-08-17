@@ -1,10 +1,12 @@
-const Component = require('./component');
+import Component from './component';
+
+import template from './reset.ejs';
 
 class Reset extends Component {
   constructor(nets) {
     super('reset', null, 2, nets);
-    this.template = require('./reset.ejs');
+    this.template = template;
   }
 }
 
-module.exports = Reset;
+export default Reset;

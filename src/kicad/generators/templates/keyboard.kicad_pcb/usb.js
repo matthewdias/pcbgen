@@ -1,10 +1,12 @@
-const Component = require('./component');
+import Component from './component';
+
+import template from './usb.ejs'
 
 class Usb extends Component {
   constructor(nets) {
     super('usb', null, 6, nets, 'USB');
-    this.template = require('./usb.ejs');
+    this.template = template;
   }
 }
 
-module.exports = Usb;
+export default Usb;

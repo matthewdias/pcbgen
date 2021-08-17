@@ -1,10 +1,12 @@
-const Rectangular = require('./rectangular');
+import Rectangular from './rectangular';
+
+import template from './frame.ejs'
 
 class Frame extends Rectangular {
   constructor(kb, name, radius) {
     super(kb, 'frame', name, radius);
-    this.template = require('./frame.ejs');
+    this.template = template;
   }
 }
 
-module.exports = Frame;
+export default Frame;

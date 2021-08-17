@@ -1,4 +1,4 @@
-module.exports = `(module MX_Only:MXOnly-<%= data.key.size.w %>U<% if (data.key.size.w == 6) {%>-Centered<%}%>-Hotswap<% if (data.key.reversedStabs) {%>-ReversedStabilizers<%}%> (layer F.Cu) (tedit 5A9F5203)
+export default `(module MX_Only:MXOnly-<%= data.key.size.w %>U<% if (data.key.size.w == 6) {%>-Centered<%}%>-Hotswap<% if (data.key.reversedStabs) {%>-ReversedStabilizers<%}%> (layer F.Cu) (tedit 5A9F5203)
   (attr smd)
   (tstamp <%= data.key.id.toString(16) %>0)
   (at

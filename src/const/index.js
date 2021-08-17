@@ -1,6 +1,6 @@
-const Keycodes = require('./keycodes');
-const Presets = require('./presets');
-const Local = require('./local');
+import Keycodes from './keycodes';
+import Presets from './presets';
+import Local from './local';
 
 const C = {
 
@@ -111,11 +111,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	PRESETS: Presets,
 
 	// Local settings.
-	LOCAL: process.env._ && process.env._.indexOf("heroku") ? {
-        "API": `http://localhost:${process.env.PORT}`,
-        "PRESETS": `http://localhost:${process.env.PORT}/presets/`
-    } : Local
+	LOCAL: Local
 
 };
 
-module.exports = C;
+export default C;

@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 $Comp
 L MCU_Microchip_ATmega:ATmega32U4-AU U1
 U 1 1 5FA094EE

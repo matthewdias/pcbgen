@@ -1,7 +1,7 @@
-const React = require('react');
-const classNames = require('classnames');
+import React from 'react';
+import classNames from 'classnames';
 
-const C = require('const');
+import C from '../../const';
 
 class Layouts extends React.Component {
 
@@ -37,4 +37,4 @@ class Layouts extends React.Component {
 
 }
 
-module.exports = Layouts;
+export default Layouts;

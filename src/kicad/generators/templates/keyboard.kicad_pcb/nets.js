@@ -36,4 +36,4 @@ class Nets {
   }
 }
 
-module.exports = Nets;
+export default Nets;

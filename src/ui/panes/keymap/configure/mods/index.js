@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-const Toggle = require('ui/elements/toggle');
+import Toggle from '../../../../elements/toggle';
 
 class Mods extends React.Component {
 
@@ -44,4 +44,4 @@ class Mods extends React.Component {
 
 }
 
-module.exports = Mods;
+export default Mods;

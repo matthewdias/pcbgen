@@ -1,7 +1,10 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
+import 'core-js';
+import 'regenerator-runtime/runtime';
 
-const Index = require('main/index');
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import Index from './main/index';
 
 ReactDOM.render(
 	<Index/>,

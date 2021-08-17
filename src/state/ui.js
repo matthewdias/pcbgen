@@ -42,4 +42,4 @@ class UI {
 
 }
 
-module.exports = UI;
+export default UI;

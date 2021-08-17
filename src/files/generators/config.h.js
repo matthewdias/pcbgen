@@ -1,10 +1,12 @@
-const Generator = require('./index');
+import Generator from './index';
 
-const C = require('const');
+import C from '../../const';
+
+import template from './templates/config.h'
 
 class ConfigH extends Generator {
 
-	loadTemplate() { return require('./templates/config.h'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
 		const keyboard = this.keyboard;
@@ -36,4 +38,4 @@ class ConfigH extends Generator {
 
 }
 
-module.exports = ConfigH;
+export default ConfigH;

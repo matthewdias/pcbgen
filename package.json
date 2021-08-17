@@ -4,8 +4,8 @@
 	"description": "KiCad PCB and QMK Firmware generator",
 	"main": "index.js",
 	"scripts": {
-		"watch": "cross-env NODE_PATH=./src node index.js",
-		"build": "cross-env NODE_PATH=./src NODE_ENV=production node deploy.js",
+		"start": "webpack serve --mode development",
+		"build": "webpack --mode production",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"test:watch": "./node_modules/.bin/mocha -w --extension js,ejs"
 	},
@@ -25,26 +25,26 @@
 		"@babel/preset-env": "^7.15.0",
 		"@babel/preset-react": "^7.14.5",
 		"babel-plugin-transform-runtime": "^6.23.0",
-		"babelify": "^10.0.0",
 		"body-parser": "^1.15.2",
-		"browserify": "^13.3.0",
 		"chai": "4.2.0",
 		"classnames": "^2.2.5",
 		"co": "^4.6.0",
 		"codemirror": "^5.22.0",
+		"core-js": "^2.6.12",
 		"crypto": "0.0.3",
 		"ejs": "^2.6.1",
-		"errorify": "^0.3.1",
 		"express": "^4.14.0",
 		"mocha": "6.0.2",
 		"react": "^15.4.1",
 		"react-codemirror": "^0.3.0",
 		"react-dom": "^15.4.1",
-		"superagent": "^3.3.1",
-		"uglifyify": "^3.0.4",
-		"watchify": "^3.7.0"
+		"regenerator-runtime": "^0.11.1",
+		"superagent": "^3.3.1"
 	},
 	"devDependencies": {
-		"cross-env": "^3.1.4"
+		"babel-loader": "^8.2.2",
+		"webpack": "^5.50.0",
+		"webpack-cli": "^4.8.0",
+		"webpack-dev-server": "^3.11.2"
 	}
 }

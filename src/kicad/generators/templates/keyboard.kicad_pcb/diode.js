@@ -1,10 +1,12 @@
-const Component = require('./component');
+import Component from './component';
+
+import template from './diode.ejs'
 
 class Diode extends Component {
   constructor(key, nets) {
     super('diode', `D${key.id}`, 2, nets);
     this.setPad(1, `row${key.row}`);
-    this.template = require('./diode.ejs');
+    this.template = template;
     this.key = key;
   }
 
@@ -17,4 +19,4 @@ class Diode extends Component {
   }
 }
 
-module.exports = Diode;
+export default Diode;

@@ -1,8 +1,8 @@
-const React = require('react');
-const classNames = require('classnames');
+import React from 'react';
+import classNames from 'classnames';
 
-const Utils = require('utils');
-const C = require('const');
+import Utils from '../../../../../utils';
+import C from '../../../../../const';
 
 class Selector extends React.Component {
 
@@ -123,4 +123,4 @@ class Selector extends React.Component {
 
 }
 
-module.exports = Selector;
+export default Selector;

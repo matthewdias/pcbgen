@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 <% if (data.key.col === 0) { %>
 Text GLabel <%= x - 600 %> <%= y + 400 %> 0    50   Input ~ 0
 row<%= data.key.row %>

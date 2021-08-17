@@ -1,9 +1,9 @@
-const React = require('react');
-const classNames = require('classnames');
+import React from 'react';
+import classNames from 'classnames';
 
-const Wire = require('./wire');
+import Wire from './wire';
 
-const C = require('const');
+import C from '../../../const';
 
 class Wiring extends React.Component {
 
@@ -125,4 +125,4 @@ class Wiring extends React.Component {
 
 }
 
-module.exports = Wiring;
+export default Wiring;

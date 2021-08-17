@@ -1,10 +1,12 @@
-const Component = require('./component');
+import Component from './component';
+
+import template from './micro.ejs'
 
 class Micro extends Component {
   constructor(nets) {
     super('micro', null, 44, nets, 'U');
-    this.template = require('./micro.ejs');
+    this.template = template;
   }
 }
 
-module.exports = Micro;
+export default Micro;

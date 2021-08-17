@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	'gh60-ansi': 'GH60 (ANSI)',
 	'gh60satan-ansi': 'GH60 Satan (ANSI)',
 	'alps64-aek': 'Alps64 (AEK)',

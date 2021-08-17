@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 class Toggle extends React.Component {
 
@@ -12,4 +12,4 @@ class Toggle extends React.Component {
 
 }
 
-module.exports = Toggle;
+export default Toggle;

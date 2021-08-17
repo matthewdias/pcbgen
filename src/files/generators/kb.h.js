@@ -1,10 +1,10 @@
-const Generator = require('./index');
+import Generator from './index';
 
-const Utils = require('utils');
+import template from './templates/kb.h'
 
 class KeyboardH extends Generator {
 
-	loadTemplate() { return require('./templates/kb.h'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
 		const keyboard = this.keyboard;
@@ -70,4 +70,4 @@ class KeyboardH extends Generator {
 
 }
 
-module.exports = KeyboardH;
+export default KeyboardH;

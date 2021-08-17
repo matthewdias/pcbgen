@@ -1,11 +1,11 @@
-const React = require('react');
+import React from 'react';
 
-const Keyboard = require('state/keyboard');
+import Keyboard from '../state/keyboard';
 
-const C = require('const');
-const Utils = require('utils');
+import C from '../const';
+import Utils from '../utils';
 
-const Request = require('superagent');
+import Request from 'superagent';
 
 class Main extends React.Component {
 
@@ -126,4 +126,4 @@ class Main extends React.Component {
 
 }
 
-module.exports = Main;
+export default Main;

@@ -1,4 +1,4 @@
-module.exports = (type, num) => {
+export default (type, num) => {
   const prefix = type
     .split('')
     .reduce((acc, v, i) => acc + type.charCodeAt(i), 0)

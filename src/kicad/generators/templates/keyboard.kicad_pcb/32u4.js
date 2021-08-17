@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     nets: [
         "+5V","D-","D+",
         "Net-(C7-Pad1)",

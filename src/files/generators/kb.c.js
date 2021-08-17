@@ -1,10 +1,10 @@
-const Generator = require('./index');
+import Generator from './index';
 
-const Utils = require('utils');
+import template from './templates/kb.c'
 
 class KeyboardC extends Generator {
 
-	loadTemplate() { return require('./templates/kb.c'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
 		const keyboard = this.keyboard;
@@ -18,4 +18,4 @@ class KeyboardC extends Generator {
 
 }
 
-module.exports = KeyboardC;
+export default KeyboardC;

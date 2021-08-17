@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 class Help extends React.Component {
 
@@ -15,4 +15,4 @@ class Help extends React.Component {
 
 }
 
-module.exports = Help;
+export default Help;

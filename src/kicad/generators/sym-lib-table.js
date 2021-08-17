@@ -1,8 +1,9 @@
-const Generator = require('../../files/generators/index');
+import Generator from '../../files/generators/index';
 
+import template from './templates/sym-lib-table'
 class SymLibTableGenerator extends Generator {
 
-	loadTemplate() { return require('./templates/sym-lib-table'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
 		const keyboard = this.keyboard;
@@ -11,4 +12,4 @@ class SymLibTableGenerator extends Generator {
 
 }
 
-module.exports = SymLibTableGenerator;
+export default SymLibTableGenerator;

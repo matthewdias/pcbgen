@@ -1,5 +1,6 @@
-const Generator = require('../index');
-const C = require('const');
+import Generator from '../index';
+
+import template from './templates/config.h'
 
 class VialConfigH extends Generator {
 
@@ -8,7 +9,7 @@ class VialConfigH extends Generator {
         this.vialUid = vialUid;
     }
 
-	loadTemplate() { return require('./templates/config.h'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
 		const keyboard = this.keyboard;
@@ -20,4 +21,4 @@ class VialConfigH extends Generator {
 
 }
 
-module.exports = VialConfigH;
+export default VialConfigH;

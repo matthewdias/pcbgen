@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 <%
 const x = data.x;
 const y = data.y;

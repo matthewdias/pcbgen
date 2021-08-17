@@ -1,10 +1,11 @@
-const Generator = require('./index');
+import Generator from './index';
 
-const C = require('const');
+import C from '../../const';
 
+import template from './templates/keymap.c';
 class KeymapC extends Generator {
 
-	loadTemplate() { return require('./templates/keymap.c'); }
+	loadTemplate() { return template }
 
 	fillTemplate() {
 		const keyboard = this.keyboard;
@@ -42,4 +43,4 @@ class KeymapC extends Generator {
 
 }
 
-module.exports = KeymapC;
+export default KeymapC;

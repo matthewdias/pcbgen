@@ -1,21 +1,26 @@
-const ejs = require('ejs');
-const Generator = require('../../files/generators/index');
-const formatName = require('./name');
-const genTstamp = require('./tstamp');
-const pinPadMap = require('./pin-pad-map');
-const C = require('const');
+import ejs from 'ejs';
+import Generator from '../../files/generators/index';
+import formatName from './name';
+// import genTstamp from './tstamp';
+// import pinPadMap from './pin-pad-map';
+import C from '../../const';
+
+import template from './templates/keyboard.sch'
+
+import switchTpl from './templates/keyboard.sch/switch';
+import diodeTpl from './templates/keyboard.sch/diode';
+import rowLabelTpl from './templates/keyboard.sch/row-label';
+import colLabelTpl from './templates/keyboard.sch/col-label';
+import wiringTpl from './templates/keyboard.sch/wiring';
+import controller32u4 from './templates/keyboard.sch/32u4.sch';
+import controller32u4JST from './templates/keyboard.sch/32u4-db.sch';
+import RGB from './templates/keyboard.sch/rgb.js';
 
 class SchematicsGenerator extends Generator {
     
-    loadTemplate() { return require('./templates/keyboard.sch'); }
+    loadTemplate() { return template }
     
     renderMatrix(components) {
-        const switchTpl = require('./templates/keyboard.sch/switch');
-        const diodeTpl = require('./templates/keyboard.sch/diode');
-        const rowLabelTpl = require('./templates/keyboard.sch/row-label');
-        const colLabelTpl = require('./templates/keyboard.sch/col-label');
-        const wiringTpl = require('./templates/keyboard.sch/wiring');
-        
         const keyboard = this.keyboard;
         const lastColY = [...Array(keyboard.cols)].fill(0);
         const nameSet = new Set();
@@ -104,9 +109,6 @@ Connection ~ ${data.x + 400} ${data.y + 50}
     }
 
     renderController(components, controller) {
-        const controller32u4 = require('./templates/keyboard.sch/32u4.sch');
-        const controller32u4JST = require('./templates/keyboard.sch/32u4-db.sch');
-
         switch(controller) {
             case C.CONTROLLER_ATMEGA32U4: {
                 if (this.keyboard.settings.connectorType === C.CONNECTOR_JST) {
@@ -120,8 +122,6 @@ Connection ~ ${data.x + 400} ${data.y + 50}
     }
 
     renderRGB(components, rgbNum) {
-        const RGB = require('./templates/keyboard.sch/rgb.js');
-
         const data = { x: 2450 }
 
         components.push(ejs.render(RGB.start, data))
@@ -147,4 +147,4 @@ Connection ~ ${data.x + 400} ${data.y + 50}
     }
 }
 
-module.exports = SchematicsGenerator;
+export default SchematicsGenerator;

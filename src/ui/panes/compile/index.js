@@ -1,11 +1,12 @@
-const React = require('react');
+import React from 'react';
 
-const Files = require('files');
-const KiCad = require('kicad');
+import Files from '../../../files';
+import KiCad from '../../../kicad';
+import KbHGenerator from '../../../files/generators/kb.h';
 
-const Request = require('superagent');
+import Request from 'superagent';
 
-const C = require('const');
+import C from '../../../const';
 
 class Compile extends React.Component {
 
@@ -167,7 +168,6 @@ class Compile extends React.Component {
 	generateKeyboardH() {
 		const state = this.props.state;
 		const keyboard = state.keyboard;
-		const KbHGenerator = require('files/generators/kb.h');
 		return new KbHGenerator(keyboard).generate();
 	}
 
@@ -191,4 +191,4 @@ class Compile extends React.Component {
 
 }
 
-module.exports = Compile;
+export default Compile;

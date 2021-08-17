@@ -1,4 +1,4 @@
-module.exports = `(module Alps_Only:ALPS-<%= data.key.size.w %>U (layer F.Cu) (tedit 5A9F5203)
+export default `(module Alps_Only:ALPS-<%= data.key.size.w %>U (layer F.Cu) (tedit 5A9F5203)
   (tstamp <%= data.key.id.toString(16) %>0)
   (at
   <%= data.x %>

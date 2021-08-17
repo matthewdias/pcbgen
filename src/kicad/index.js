@@ -1,8 +1,8 @@
-const PCBGenerator = require('./generators/keyboard.kicad_pcb');
-const SchematicsGenerator = require('./generators/keyboard.sch');
-const ProjectGenerator = require('./generators/keyboard.pro');
-const FpLibTableGenerator = require('./generators/fp-lib-table');
-const SymLibTableGenerator = require('./generators/sym-lib-table');
+import PCBGenerator from './generators/keyboard.kicad_pcb';
+import SchematicsGenerator from './generators/keyboard.sch';
+import ProjectGenerator from './generators/keyboard.pro';
+import FpLibTableGenerator from './generators/fp-lib-table';
+import SymLibTableGenerator from './generators/sym-lib-table';
 
 class KiCad {
     
@@ -25,4 +25,4 @@ class KiCad {
     
 }
 
-module.exports = KiCad;
+export default KiCad;

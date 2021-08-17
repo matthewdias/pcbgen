@@ -1,6 +1,6 @@
-const UI = require('./ui');
+import UI from './ui';
 
-const C = require('const');
+import C from '../const';
 
 class State {
 
@@ -47,4 +47,4 @@ class State {
 
 }
 
-module.exports = State;
+export default State;

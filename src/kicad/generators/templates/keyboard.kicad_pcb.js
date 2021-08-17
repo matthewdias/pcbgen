@@ -1,4 +1,4 @@
-module.exports = `(kicad_pcb (version 20171130) (host pcbnew "(5.0.0-3-g5ebb6b6)")
+export default `(kicad_pcb (version 20171130) (host pcbnew "(5.0.0-3-g5ebb6b6)")
 
   (general
     (thickness 1.6)

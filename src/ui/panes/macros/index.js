@@ -1,10 +1,10 @@
-const React = require('react');
+import React from 'react';
 
-const Editor = require('./editor');
+import Editor from './editor';
 
-const NumberBox = require('ui/elements/numberbox');
+import NumberBox from '../../elements/numberbox';
 
-const C = require('const');
+import C from '../../../const';
 
 class Macros extends React.Component {
 
@@ -35,4 +35,4 @@ class Macros extends React.Component {
 
 }
 
-module.exports = Macros;
+export default Macros;

@@ -1,11 +1,11 @@
-const React = require('react');
+import React from 'react';
 
-const Main = require('main/main');
-const Editor = require('main/editor');
+import Main from './main';
+import Editor from './editor';
 
-const State = require('state');
+import State from '../state';
 
-const C = require('const');
+import C from '../const';
 
 class Index extends React.Component {
 
@@ -35,4 +35,4 @@ class Index extends React.Component {
 
 }
 
-module.exports = Index;
+export default Index;

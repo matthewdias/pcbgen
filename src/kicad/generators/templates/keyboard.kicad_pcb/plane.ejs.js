@@ -1,4 +1,4 @@
-module.exports = `  (zone (net 0) (net_name <%= data.name %>) (layer <%= data.layer %>) (tstamp 0) (hatch edge 0.508)
+export default `  (zone (net 0) (net_name <%= data.name %>) (layer <%= data.layer %>) (tstamp 0) (hatch edge 0.508)
     (connect_pads yes (clearance 0.25))
     (min_thickness 0.254)
     (fill yes (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))

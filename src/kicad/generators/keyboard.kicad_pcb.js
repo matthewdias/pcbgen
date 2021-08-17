@@ -1,26 +1,28 @@
-const Generator = require('../../files/generators/index');
-const Nets = require('./templates/keyboard.kicad_pcb/nets');
-const Switch = require('./templates/keyboard.kicad_pcb/switch');
-const Diode = require('./templates/keyboard.kicad_pcb/diode');
-const Frame = require('./templates/keyboard.kicad_pcb/frame');
-const Controller32u4 = require('./templates/keyboard.kicad_pcb/32u4');
-const Controller32u4JST = require('./templates/keyboard.kicad_pcb/32u4-db');
-const RGB = require('./templates/keyboard.kicad_pcb/rgb');
-// const Plane = require('./templates/keyboard.kicad_pcb/plane');
-// const Crystal = require('./templates/keyboard.kicad_pcb/crystal');
-// const Cap = require('./templates/keyboard.kicad_pcb/cap');
-// const Resistor = require('./templates/keyboard.kicad_pcb/resistor');
-// const Reset = require('./templates/keyboard.kicad_pcb/reset');
-// const Micro = require('./templates/keyboard.kicad_pcb/micro');
-// const USB = require('./templates/keyboard.kicad_pcb/usb');
+import Generator from '../../files/generators/index';
+import Nets from './templates/keyboard.kicad_pcb/nets';
+import Switch from './templates/keyboard.kicad_pcb/switch';
+import Diode from './templates/keyboard.kicad_pcb/diode';
+import Frame from './templates/keyboard.kicad_pcb/frame';
+import Controller32u4 from './templates/keyboard.kicad_pcb/32u4';
+import Controller32u4JST from './templates/keyboard.kicad_pcb/32u4-db';
+import RGB from './templates/keyboard.kicad_pcb/rgb';
+// import Plane from './templates/keyboard.kicad_pcb/plane';
+// import Crystal from './templates/keyboard.kicad_pcb/crystal';
+// import Cap from './templates/keyboard.kicad_pcb/cap';
+// import Resistor from './templates/keyboard.kicad_pcb/resistor';
+// import Reset from './templates/keyboard.kicad_pcb/reset';
+// import Micro from './templates/keyboard.kicad_pcb/micro';
+// import USB from './templates/keyboard.kicad_pcb/usb';
 
-const formatName = require('./name');
-const pinPadMap = require('./pin-pad-map');
-const C = require('../../const');
+import formatName from './name';
+// import pinPadMap from './pin-pad-map';
+import C from '../../const';
+
+import template from './templates/keyboard.kicad_pcb'
 
 class PCBGenerator extends Generator {
     
-    loadTemplate() { return require('./templates/keyboard.kicad_pcb'); }
+    loadTemplate() { return template }
     
     fillTemplate() {
         const keyboard = this.keyboard;
@@ -88,4 +90,4 @@ class PCBGenerator extends Generator {
     
 }
 
-module.exports = PCBGenerator;
+export default PCBGenerator;

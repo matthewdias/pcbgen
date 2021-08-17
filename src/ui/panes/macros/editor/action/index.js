@@ -1,10 +1,10 @@
-const React = require('react');
+import React from 'react';
 
-const Keycode = require('state/keyboard/keycode');
+import Keycode from '../../../../../state/keyboard/keycode';
 
-const Selector = require('ui/panes/keymap/configure/selector');
+import Selector from '../../../keymap/configure/selector';
 
-const C = require('const');
+import C from '../../../../../const';
 
 class Action extends React.Component {
 
@@ -178,4 +178,4 @@ class Action extends React.Component {
 
 }
 
-module.exports = Action;
+export default Action;

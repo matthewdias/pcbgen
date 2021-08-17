@@ -1,8 +1,8 @@
-const React = require('react');
+import React from 'react';
 
-const Tab = require('./tab');
+import Tab from './tab';
 
-const C = require('const');
+import C from '../../../const';
 
 class Tabs extends React.Component {
 
@@ -68,4 +68,4 @@ class Tabs extends React.Component {
 
 }
 
-module.exports = Tabs;
+export default Tabs;

@@ -1,4 +1,4 @@
-const C = require('../../const');
+import C from '../../const';
 
 class Keycode {
 
@@ -192,4 +192,4 @@ class Keycode {
 
 }
 
-module.exports = Keycode;
+export default Keycode;

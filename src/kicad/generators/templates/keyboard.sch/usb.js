@@ -1,4 +1,4 @@
-module.exports = `$Comp
+export default `$Comp
 L keyboard_parts:USB_mini_micro_B <%= data.name %>
 U 1 1 <%= data.tstamp %>
 P <%= data.x %> <%= data.y %>

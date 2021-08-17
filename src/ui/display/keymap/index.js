@@ -1,6 +1,6 @@
-const React = require('react');
+import React from 'react';
 
-const C = require('const');
+import C from '../../../const';
 
 class Keymap extends React.Component {
 
@@ -61,4 +61,4 @@ class Keymap extends React.Component {
 
 }
 
-module.exports = Keymap;
+export default Keymap;

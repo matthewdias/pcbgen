@@ -1,9 +1,11 @@
-const Component = require('./component');
+import Component from './component';
+
+import template from './resistor.ejs'
 
 class Resistor extends Component {
   constructor(resistence, nets) {
     super('resistor', null, 2, nets);
-    this.template = require('./resistor.ejs');
+    this.template = template;
     this.res = resistence;
   }
 
@@ -12,4 +14,4 @@ class Resistor extends Component {
   }
 }
 
-module.exports = Resistor;
+export default Resistor;

@@ -1,7 +1,7 @@
-const React = require('react');
-const classNames = require('classnames');
+import React from 'react';
+import classNames from 'classnames';
 
-const C = require('const');
+import C from '../../const';
 
 class Key extends React.Component {
 
@@ -68,4 +68,4 @@ class Key extends React.Component {
 
 }
 
-module.exports = Key;
+export default Key;

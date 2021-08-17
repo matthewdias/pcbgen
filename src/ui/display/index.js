@@ -1,14 +1,14 @@
-const React = require('react');
-const classNames = require('classnames');
+import React from 'react';
+import classNames from 'classnames';
 
-const Key = require('./key');
+import Key from './key';
 
-const Keycode = require('state/keyboard/keycode');
+import Keycode from '../../state/keyboard/keycode';
 
-const Wiring = require('./wiring');
-const Keymap = require('./keymap');
+import Wiring from './wiring';
+import Keymap from './keymap';
 
-const C = require('const');
+import C from '../../const';
 
 class Display extends React.Component {
 
@@ -166,4 +166,4 @@ class Display extends React.Component {
 
 }
 
-module.exports = Display;
+export default Display;

@@ -1,6 +1,6 @@
-const fs = require('fs');
-const ejs = require('ejs');
-const tstamp = require('../../tstamp');
+import fs from 'fs';
+import ejs from 'ejs';
+import tstamp from '../../tstamp';
 
 const genId = () => `${prefix}${randomHex(2)}`.toUpperCase();
 
@@ -90,4 +90,4 @@ class Component {
 
 Component.options = { initX: 0, initY: 0 };
 
-module.exports = Component;
+export default Component;

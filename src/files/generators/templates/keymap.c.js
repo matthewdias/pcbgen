@@ -1,4 +1,4 @@
-module.exports = `
+export default `
 
 /*
 Copyright %current_year% %author%

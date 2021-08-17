@@ -1,15 +1,15 @@
-const React = require('react');
+import React from 'react';
 
-const Tabs = require('./tabs');
-const Wiring = require('./wiring');
-const Pins = require('./pins');
-const Keymap = require('./keymap');
-const Macros = require('./macros');
-const Quantum = require('./quantum');
-const Settings = require('./settings');
-const Compile = require('./compile');
+import Tabs from './tabs';
+import Wiring from './wiring';
+import Pins from './pins';
+import Keymap from './keymap';
+import Macros from './macros';
+import Quantum from './quantum';
+import Settings from './settings';
+import Compile from './compile';
 
-const C = require('const');
+import C from '../../const';
 
 class Panes extends React.Component {
 
@@ -35,4 +35,4 @@ class Panes extends React.Component {
 
 }
 
-module.exports = Panes;
+export default Panes;

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     start: `
 $Comp
 L power:GND #PWR0119

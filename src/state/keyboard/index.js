@@ -1,8 +1,8 @@
-const Key = require('./key');
-const Keycode = require('./keycode');
+import Key from './key';
+import Keycode from './keycode';
 
-const C = require('../../const');
-const Utils = require('../../utils');
+import C from '../../const';
+import Utils from '../../utils';
 
 class Keyboard {
 
@@ -567,4 +567,4 @@ class Keyboard {
 
 }
 
-module.exports = Keyboard;
+export default Keyboard;

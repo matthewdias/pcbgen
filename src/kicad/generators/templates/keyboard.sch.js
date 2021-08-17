@@ -1,4 +1,4 @@
-module.exports = `EESchema Schematic File Version 4
+export default `EESchema Schematic File Version 4
 EELAYER 26 0
 EELAYER END
 $Descr A2 23386 16535

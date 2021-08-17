@@ -579,7 +579,7 @@ const recommended = [
 	'KC_SPC'
 ];
 
-module.exports = {
+export default {
 
 	KEYCODES: keycodes,
 	ALIASES: aliases,
