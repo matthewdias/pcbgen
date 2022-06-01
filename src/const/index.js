@@ -1,6 +1,6 @@
 import Keycodes from './keycodes';
 import Presets from './presets';
-import Local from './local';
+import Local from './local.json';
 
 const C = {
 
