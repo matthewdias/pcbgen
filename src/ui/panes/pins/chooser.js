@@ -1,28 +1,36 @@
-import React from 'react';
+import React from 'react'
 
-import C from '../../../const';
+import C from '../../../const'
 
-class Chooser extends React.Component {
+function Chooser(props) {
+  const { state } = props
+  const { keyboard } = state
 
-	render() {
-		const state = this.props.state;
-		const keyboard = state.keyboard;
+  const pin = props.pin || 'N/A'
 
-		const pin = this.props.pin || 'N/A';
+  // Get list of available pins.
+  const pins = props.backlight
+    ? ['B5', 'B6', 'B7']
+    : C.PINS[keyboard.controller].slice() // B5, B6, and B7 on backlight.
 
-		// Get list of available pins.
-		const pins = this.props.backlight ? ['B5', 'B6', 'B7'] : C.PINS[keyboard.controller].slice(); // B5, B6, and B7 on backlight.
+  // Allow for no pin if set.
+  if (props.noPin) pins.splice(0, 0, null)
 
-		// Allow for no pin if set.
-		if (this.props.noPin) pins.splice(0, 0, null);
-
-		return <select
-			value={ pin }
-			onChange={ e => (this.props.onChange && this.props.onChange(e.target.value === 'N/A' ? null : e.target.value)) }>
-			{ pins.map((p, index) => <option key={ index } value={ p || 'N/A' }>{ p || 'N/A' }</option>) }
-		</select>;
-	}
-
+  return (
+    <select
+      value={pin}
+      onChange={(e) =>
+        props.onChange &&
+        props.onChange(e.target.value === 'N/A' ? null : e.target.value)
+      }
+    >
+      {pins.map((p, index) => (
+        <option key={index} value={p || 'N/A'}>
+          {p || 'N/A'}
+        </option>
+      ))}
+    </select>
+  )
 }
 
-export default Chooser;
+export default Chooser

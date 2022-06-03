@@ -39,7 +39,7 @@ class Utils {
    *
    * @param {Function} callback Function to call with the data.
    */
-  static readFile(callback) {
+  static readFile(callback): void {
     // Create the file input object.
     const input = document.createElement("input")
     input.type = "file"
@@ -74,7 +74,7 @@ class Utils {
    *
    * @return {String} The filesystem friendly name.
    */
-  static generateFriendly(name) {
+  static generateFriendly(name: string) {
     return name.replace(/[^a-z0-9]/gi, "_").toLowerCase()
   }
 

@@ -25,5 +25,6 @@ module.exports = {
       { extensions: [".js", ".jsx", ".ts", ".tsx"] },
     ],
     "react/react-in-jsx-scope": "off",
+    curly: "error",
   },
 }
