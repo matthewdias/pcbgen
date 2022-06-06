@@ -1,21 +1,21 @@
-import Generator from './index';
+import Generator from './index'
 
 import template from './templates/kb.c'
 
 class KeyboardC extends Generator {
+  loadTemplate() {
+    return template
+  }
 
-	loadTemplate() { return template }
+  fillTemplate() {
+    const { keyboard } = this
 
-	fillTemplate() {
-		const keyboard = this.keyboard;
-
-		return {
-            'current_year': new Date().getFullYear(),
-            'author': keyboard.settings.author,
-			'slug': keyboard.slug
-		};
-	}
-
+    return {
+      current_year: new Date().getFullYear(),
+      author: keyboard.settings.author,
+      slug: keyboard.slug,
+    }
+  }
 }
 
-export default KeyboardC;
+export default KeyboardC

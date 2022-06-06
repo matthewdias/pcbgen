@@ -5,26 +5,49 @@ module.exports = {
     node: true,
   },
   extends: [
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "airbnb",
-    "prettier",
+    'airbnb',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',
+    'prettier',
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
-  plugins: ["react", "@typescript-eslint"],
+  plugins: ['import', 'react', '@typescript-eslint'],
   rules: {
-    "react/jsx-filename-extension": [
+    'react/jsx-filename-extension': [
       2,
-      { extensions: [".js", ".jsx", ".ts", ".tsx"] },
+      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
-    "react/react-in-jsx-scope": "off",
-    curly: "error",
+    'react/react-in-jsx-scope': 'off',
+    curly: 'error',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+  },
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+      },
+    },
   },
 }

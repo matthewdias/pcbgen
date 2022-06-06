@@ -1,17 +1,17 @@
-import Generator from '../index';
+import Generator from '../index'
 
-import template from './templates/rules.mk';
+import template from './templates/rules.mk'
 
 class VialRulesMK extends Generator {
+  loadTemplate() {
+    return template
+  }
 
-	loadTemplate() { return template }
-
-	fillTemplate() {
-		return {
-			'use_encoder': 'no'
-		};
-	}
-
+  fillTemplate() {
+    return {
+      use_encoder: 'no',
+    }
+  }
 }
 
-export default VialRulesMK;
+export default VialRulesMK

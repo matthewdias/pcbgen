@@ -8,7 +8,8 @@
     "target": "es5", // specify ECMAScript target version
     "allowJs": true, // allow a partial TypeScript and JavaScript codebase
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
     // "strict": true
   },
   "include": ["./src/"]

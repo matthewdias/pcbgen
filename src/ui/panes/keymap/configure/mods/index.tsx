@@ -2,8 +2,13 @@
 
 import Toggle from '../../../../elements/toggle'
 
-function Mods({ mods, onChange }) {
-  const handleChange = (v, mod) => {
+interface IModsProps {
+  mods: number
+  onChange: (mods: number) => void
+}
+
+function Mods({ mods, onChange }: IModsProps) {
+  const handleChange = (v: boolean, mod: number) => {
     if (onChange) {
       onChange(v ? mods | mod : mods & ~mod)
     }
@@ -13,7 +18,7 @@ function Mods({ mods, onChange }) {
     <div>
       &nbsp;&nbsp;Mods&nbsp;&nbsp;&nbsp;
       <Toggle
-        value={mods & 0b000001}
+        value={Boolean(mods & 0b000001)}
         onChange={(v) => {
           handleChange(v, 0b000001)
         }}
@@ -21,7 +26,7 @@ function Mods({ mods, onChange }) {
         CTRL
       </Toggle>
       <Toggle
-        value={mods & 0b000010}
+        value={Boolean(mods & 0b000010)}
         onChange={(v) => {
           handleChange(v, 0b000010)
         }}
@@ -29,7 +34,7 @@ function Mods({ mods, onChange }) {
         SHIFT
       </Toggle>
       <Toggle
-        value={mods & 0b000100}
+        value={Boolean(mods & 0b000100)}
         onChange={(v) => {
           handleChange(v, 0b000100)
         }}
@@ -37,7 +42,7 @@ function Mods({ mods, onChange }) {
         ALT
       </Toggle>
       <Toggle
-        value={mods & 0b001000}
+        value={Boolean(mods & 0b001000)}
         onChange={(v) => {
           handleChange(v, 0b001000)
         }}
@@ -45,7 +50,7 @@ function Mods({ mods, onChange }) {
         GUI
       </Toggle>
       <Toggle
-        value={mods & 0b010000}
+        value={Boolean(mods & 0b010000)}
         onChange={(v) => {
           handleChange(v, 0b010000)
         }}
@@ -53,7 +58,7 @@ function Mods({ mods, onChange }) {
         HYPER
       </Toggle>
       <Toggle
-        value={mods & 0b100000}
+        value={Boolean(mods & 0b100000)}
         onChange={(v) => {
           handleChange(v, 0b100000)
         }}

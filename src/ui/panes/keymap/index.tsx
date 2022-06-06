@@ -1,5 +1,3 @@
-import React from 'react'
-
 import NumberBox from '../../elements/numberbox'
 
 import Configure from './configure'

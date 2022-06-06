@@ -1,9 +1,4 @@
-import React from 'react'
-
 import NumberBox from '../../elements/numberbox'
-import Help from '../../elements/help'
-
-import C from '../../../const'
 
 interface IWiringProps {
   state: {
