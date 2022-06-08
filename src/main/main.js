@@ -28,7 +28,9 @@ class Main extends React.Component {
         const deserialized = JSON.parse(contents)
 
         // Ensure the version is correct.
-        if (deserialized.version !== C.VERSION) throw 'version mismatch'
+        if (deserialized.version !== C.VERSION) {
+          throw 'version mismatch'
+        }
 
         // Build a new keyboard.
         const keyboard = Keyboard.deserialize(state, deserialized.keyboard)
