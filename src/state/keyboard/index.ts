@@ -6,6 +6,11 @@ import Keycode from './keycode'
 import C from '../../const'
 import Utils from '../../utils'
 
+interface IMacro {
+  action: number
+  argument: number | null
+}
+
 class Keyboard {
   bounds: { min: { x: number; y: number }; max: { x: number; y: number } }
 
@@ -39,7 +44,7 @@ class Keyboard {
 
   wiring: { [name: string]: Key[] }
 
-  macros: { [id: number]: Array<unknown> }
+  macros: { [id: number]: Array<IMacro> }
 
   /*
    * Constructor for a keyboard object.
@@ -567,7 +572,7 @@ class Keyboard {
    *
    * @param {Number} id The id of the macro.
    */
-  getMacro(id) {
+  getMacro(id: number): IMacro[] {
     if (this.macros[id]) {
       return this.macros[id]
     }
@@ -580,7 +585,7 @@ class Keyboard {
    * @param {Number} id The id of the macro.
    * @param {List} macro The new macro.
    */
-  setMacro(id: number, macro: Array<unknown>) {
+  setMacro(id: number, macro: IMacro[]) {
     this.macros[id] = macro
     if (macro.length === 0) {
       delete this.macros[id]

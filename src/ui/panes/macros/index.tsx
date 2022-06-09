@@ -1,12 +1,18 @@
+import { useState } from 'react'
 import Editor from './editor'
 import NumberBox from '../../elements/numberbox'
 import C from '../../../const'
+import State from '../../../state'
 
-function Macros(props) {
-  const { state } = props
-  const { keyboard } = state
+interface IMacrosProps {
+  state: State
+}
 
-  const current = state.ui.get('macros-current', 0)
+function Macros({ state }: IMacrosProps) {
+  const [currentMacro, setCurrentMacro] = useState<number>(0)
+  const handleChangeMacro = (code: number) => {
+    setCurrentMacro(code)
+  }
 
   return (
     <div className="pane-keymap">
@@ -14,16 +20,16 @@ function Macros(props) {
       <div style={{ height: '0.5rem' }} />
       <NumberBox
         style={{ width: '3rem' }}
-        value={current}
+        value={currentMacro}
         min={0}
         minus="chevron-down"
         plus="chevron-up"
-        onChange={(v) => state.ui.set('macros-current', v)}
+        onChange={handleChangeMacro}
       />
       <div style={{ height: '1.5rem' }} />
       Edit the macro.
       <div style={{ height: '0.5rem' }} />
-      <Editor key={current} state={state} />
+      <Editor key={currentMacro} currentMacro={currentMacro} state={state} />
     </div>
   )
 }
