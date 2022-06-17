@@ -23,4 +23,4 @@ RGBLIGHT_ENABLE = %use_rgb%        # Enable keyboard RGB underglow
 BLUETOOTH_ENABLE = no       # Enable Bluetooth
 AUDIO_ENABLE = no           # Audio output
 
-`.trim();
+`.trim()

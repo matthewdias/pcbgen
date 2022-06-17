@@ -4,4 +4,4 @@ export default `
 
 %vial_uid%
 
-`.trim();
+`.trim()

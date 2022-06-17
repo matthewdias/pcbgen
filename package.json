@@ -1,50 +1,71 @@
 {
-	"name": "pcbgen",
-	"version": "0.1.0",
-	"description": "KiCad PCB and QMK Firmware generator",
-	"main": "index.js",
-	"scripts": {
-		"start": "cd server && node index.js",
-		"watch": "webpack --watch --devtool eval --mode development",
-		"build": "webpack --mode production",
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"test:watch": "./node_modules/.bin/mocha -w --extension js,ejs"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/matthewdias/pcbgen.git"
-	},
-	"author": "matthewdias",
-	"license": "GPL-3.0",
-	"bugs": {
-		"url": "https://github.com/matthewdias/pcbgen/issues"
-	},
-	"homepage": "https://github.com/matthewdias/pcbgen#readme",
-	"dependencies": {
-		"@babel/core": "^7.15.0",
-		"@babel/plugin-transform-runtime": "^7.15.0",
-		"@babel/preset-env": "^7.15.0",
-		"@babel/preset-react": "^7.14.5",
-		"body-parser": "^1.15.2",
-		"chai": "4.2.0",
-		"classnames": "^2.2.5",
-		"co": "^4.6.0",
-		"codemirror": "^5.22.0",
-		"core-js": "^2.6.12",
-		"crypto": "0.0.3",
-		"ejs": "^2.6.1",
-		"express": "^4.14.0",
-		"mocha": "6.0.2",
-		"react": "^15.4.1",
-		"react-codemirror": "^0.3.0",
-		"react-dom": "^15.4.1",
-		"regenerator-runtime": "^0.11.1",
-		"superagent": "^3.3.1"
-	},
-	"devDependencies": {
-		"babel-loader": "^8.2.2",
-		"terser-webpack-plugin": "^5.1.4",
-		"webpack": "^5.50.0",
-		"webpack-cli": "^4.8.0"
-	}
+  "name": "pcbgen",
+  "version": "0.1.0",
+  "description": "KiCad PCB and QMK Firmware generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && node index.js",
+    "build:dev": "webpack --config webpack.dev.js --mode development && cd server && node index.js",
+    "watch": "webpack --watch --devtool eval --mode development",
+    "build": "webpack --mode production",
+    "fix:format": "prettier --write .",
+    "check:format": "prettier --check .",
+    "check:style": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:watch": "./node_modules/.bin/mocha -w --extension js,ejs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewdias/pcbgen.git"
+  },
+  "author": "matthewdias",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/matthewdias/pcbgen/issues"
+  },
+  "homepage": "https://github.com/matthewdias/pcbgen#readme",
+  "dependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "body-parser": "^1.15.2",
+    "chai": "4.2.0",
+    "classnames": "^2.2.5",
+    "co": "^4.6.0",
+    "core-js": "^2.6.12",
+    "crypto": "0.0.3",
+    "ejs": "^2.6.1",
+    "express": "^4.14.0",
+    "mocha": "6.0.2",
+    "react": "^18.0.0",
+    "react-beforeunload": "^2.5.3",
+    "react-dom": "^18.0.0",
+    "regenerator-runtime": "^0.11.1",
+    "superagent": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.3.1",
+    "@types/react-beforeunload": "^2.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "babel-loader": "^8.2.2",
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "prettier": "2.6.2",
+    "source-map-loader": "^3.0.1",
+    "terser-webpack-plugin": "^5.1.4",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.2",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.8.0"
+  }
 }
