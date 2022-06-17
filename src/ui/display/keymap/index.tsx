@@ -1,14 +1,19 @@
-import React from 'react'
-
+import { useContext } from 'react'
 import C from '../../../const'
+import { uiContext } from '../../../context/ui'
+import State from '../../../state'
+
+interface IKeymapProps {
+  state: State
+}
 
 function Keymap({ state }) {
+  const [uiState] = useContext(uiContext)
   const { keyboard } = state
-  const flipped = state.ui.get('display-flip', false)
 
-  const keySize = state.ui.get('keySize', C.KEY_SIZE)
-
-  const layer = state.ui.get('keymap-layer', 0)
+  const flipped = uiState['display-flip']
+  const { keySize } = uiState
+  const layer = uiState['keymap-layer']
 
   // Create a list of keycode boxes.
   const keys = keyboard.keys
@@ -17,7 +22,7 @@ function Keymap({ state }) {
         return true
       }
 
-      return key.layoutOption === state.ui.get(`layout:${key.layout}`)
+      return key.layoutOption === uiState[`layout:${key.layout}`]
     })
     .map((key, index) => {
       const style = {
@@ -29,7 +34,7 @@ function Keymap({ state }) {
       }
 
       // Only apply rotation if needed.
-      if (key.angle != 0) {
+      if (key.angle !== 0) {
         const rotateString = `rotate(${key.angle}deg)`
         style.WebkitTransform = rotateString
         style.MozTransform = rotateString

@@ -1,4 +1,4 @@
-import React from 'react'
+import { useContext } from 'react'
 import classNames from 'classnames'
 
 import Key from './key'
@@ -9,9 +9,11 @@ import Wiring from './wiring'
 import Keymap from './keymap'
 
 import C from '../../const'
+import { UIActionTypes, uiContext } from '../../context/ui'
 
 function Display({ state }) {
   const { keyboard } = state
+  const [uiState, uiDispatch] = useContext(uiContext)
 
   /*
    * Generate a function that manages the zoom of the board.
@@ -22,7 +24,7 @@ function Display({ state }) {
    */
   const zoom = (direction) => () => {
     // Get the current key size.
-    const keySize = state.ui.get('keySize', C.KEY_SIZE)
+    const { keySize } = uiState
 
     // Apply the direction.
     const directionalKeySize = keySize + direction * C.KEY_SIZE_INC
@@ -32,7 +34,10 @@ function Display({ state }) {
       Math.max(directionalKeySize, C.KEY_SIZE_MIN),
       C.KEY_SIZE_MAX
     )
-    state.ui.set('keySize', boundedKeySize)
+    uiDispatch({
+      type: UIActionTypes.setFields,
+      payload: { keySize: boundedKeySize },
+    })
   }
 
   /*
@@ -64,7 +69,7 @@ function Display({ state }) {
         if (key.selected === C.KEY_PROGRAM) {
           // Program the key based on the typed key.
           if (C.KEYCODE_NUMBERS[e.which]) {
-            const layer = state.ui.get('keymap-layer', 0)
+            const layer = uiState['keymap-layer']
             key.keycodes[layer] = Keycode.getDefault(C.KEYCODE_NUMBERS[e.which])
             keyboard.verify()
           }
@@ -78,7 +83,7 @@ function Display({ state }) {
     }
   }
 
-  const keySize = state.ui.get('keySize', C.KEY_SIZE)
+  const { keySize } = uiState
 
   const className = classNames('display', { valid: keyboard.valid })
 
@@ -100,10 +105,13 @@ function Display({ state }) {
       </button>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <h4>Flip&nbsp;&nbsp;</h4>
-      <input type="checkbox" checked={state.ui.get('display-flip', false)} />
+      <input type="checkbox" checked={uiState['display-flip']} />
       <label
         onClick={() => {
-          state.ui.set('display-flip', !state.ui.get('display-flip', false))
+          uiDispatch({ type: UIActionTypes.toggleDisplayFlip })
+        }}
+        onKeyDown={() => {
+          uiDispatch({ type: UIActionTypes.toggleDisplayFlip })
         }}
       />
       <br />
@@ -118,7 +126,7 @@ function Display({ state }) {
                   return true
                 }
 
-                return key.layoutOption === state.ui.get(`layout:${key.layout}`)
+                return key.layoutOption === uiState[`layout:${key.layout}`]
               })
               .map((key, index) => (
                 <Key

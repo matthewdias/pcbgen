@@ -1,13 +1,28 @@
 import classNames from 'classnames'
+import { useContext } from 'react'
 
 import C from '../../../const'
+import { uiContext } from '../../../context/ui'
+import State from '../../../state'
 
-function Wire({ visible, state, p1, p2, row, col }) {
+interface IWireProps {
+  visible: boolean
+  state: State
+  p1: { x: number; y: number }
+  p2: { x: number; y: number }
+  row: number
+  col: number
+}
+
+function Wire({ visible, state, p1, p2, row, col }: IWireProps) {
+  const [uiState] = useContext(uiContext)
+
   if (!visible) {
     return null
   }
 
-  const flipped = state.ui.get('display-flip', false)
+  const flipped = uiState['display-flip']
+  const { keySize } = uiState
 
   const p1Item = { ...p1 }
   const p2Item = { ...p2 }
@@ -15,8 +30,6 @@ function Wire({ visible, state, p1, p2, row, col }) {
     p1Item.x = state.keyboard.bounds.max.x - p1Item.x
     p2Item.x = state.keyboard.bounds.max.x - p2Item.x
   }
-
-  const keySize = state.ui.get('keySize', C.KEY_SIZE)
 
   const className = classNames('display-wire', {
     'display-wire-row': row,

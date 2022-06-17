@@ -3,12 +3,20 @@ import NumberBox from '../../elements/numberbox'
 import Configure from './configure'
 
 import C from '../../../const'
+import State from '../../../state'
+import { useContext } from 'react'
+import { uiContext, UIActionTypes } from '../../../context/ui'
 
-function Keymap({ state }) {
+interface IKeymapProps {
+  state: State
+}
+
+function Keymap({ state }: IKeymapProps) {
   const { keyboard } = state
   const { selected } = keyboard
+  const [uiState, uiDispatch] = useContext(uiContext)
 
-  const layer = state.ui.get('keymap-layer', 0)
+  const layer = uiState['keymap-layer']
 
   return (
     <div className="pane-keymap">
@@ -21,7 +29,14 @@ function Keymap({ state }) {
         max={C.KEYMAP_MAX_LAYERS - 1}
         minus="chevron-down"
         plus="chevron-up"
-        onChange={(v) => state.ui.set('keymap-layer', v)}
+        onChange={(v) => {
+          uiDispatch({
+            type: UIActionTypes.setFields,
+            payload: {
+              'keymap-layer': v,
+            },
+          })
+        }}
       />
       <div style={{ height: '1.5rem' }} />
       Configure the selected key.

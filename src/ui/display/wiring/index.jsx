@@ -1,11 +1,13 @@
+import { useContext } from 'react'
 import Wire from './wire'
 import C from '../../../const'
+import { uiContext } from '../../../context/ui'
 
 function Wiring({ state }) {
   const { keyboard } = state
-  const flipped = state.ui.get('display-flip', false)
-
-  const keySize = state.ui.get('keySize', C.KEY_SIZE)
+  const [uiState, uiDispatch] = useContext(uiContext)
+  const flipped = uiState['display-flip']
+  const { keySize } = uiState
 
   // Create a list of Wires.
   const wires = []
@@ -29,9 +31,9 @@ function Wiring({ state }) {
                 visible={
                   (!rowKey.layout ||
                     rowKey.layoutOption ===
-                      state.ui.get(`layout:${rowKey.layout}`)) &&
+                      uiState[`layout:${rowKey.layout}`]) &&
                   (!key.layout ||
-                    key.layoutOption === state.ui.get(`layout:${key.layout}`))
+                    key.layoutOption === uiState[`layout:${key.layout}`])
                 }
                 state={state}
                 p1={key.center}
@@ -57,9 +59,9 @@ function Wiring({ state }) {
                 visible={
                   (!colKey.layout ||
                     colKey.layoutOption ===
-                      state.ui.get(`layout:${colKey.layout}`)) &&
+                      uiState[`layout:${colKey.layout}`]) &&
                   (!key.layout ||
-                    key.layoutOption === state.ui.get(`layout:${key.layout}`))
+                    key.layoutOption === uiState[`layout:${key.layout}`])
                 }
                 state={state}
                 p1={key.center}
@@ -125,7 +127,7 @@ function Wiring({ state }) {
             return true
           }
 
-          return key.layoutOption === state.ui.get(`layout:${key.layout}`)
+          return key.layoutOption === uiState[`layout:${key.layout}`]
         })
         .map((key, index) => (
           // Draw a pad on each key.
